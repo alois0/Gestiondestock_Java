@@ -1,4 +1,4 @@
-package modele;
+package modele.src;
 
 public class Fournisseur {
     

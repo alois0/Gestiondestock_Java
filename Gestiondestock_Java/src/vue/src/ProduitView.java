@@ -1,4 +1,4 @@
-package vue;
+package vue.src;
 
 public class ProduitView {
     
