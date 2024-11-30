@@ -1,12 +1,11 @@
-public class Fournisseur {
+public class Rapport {
+
     private int id;
     private String nom;
-    private String contact;
 
-    public Fournisseur(int id, String nom, String contact) {
+    public Rapport(int id, String nom) {
         this.id = id;
         this.nom = nom;
-        this.contact = contact;
     }
 
     public int getId() {
@@ -24,14 +23,4 @@ public class Fournisseur {
     public void setNom(String nom) {
         this.nom = nom;
     }
-
-    public String getContact() {
-        return contact;
-    }
-
-    public void setContact(String contact) {
-        this.contact = contact;
-    }
-
-
 }
