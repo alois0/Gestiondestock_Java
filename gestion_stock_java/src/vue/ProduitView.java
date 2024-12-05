@@ -8,11 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class ProduitView extends JFrame {
-    private ProduitController controller;
-
     public ProduitView(ProduitController controller) {
-        this.controller = controller;
-
         setTitle("Gestion des Produits");
         setSize(400, 300);
         setDefaultCloseOperation(EXIT_ON_CLOSE);

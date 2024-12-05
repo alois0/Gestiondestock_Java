@@ -1,10 +1,11 @@
 package app;
 
 import controleur.ProduitController;
+import modele.Fournisseur;
 import vue.ProduitView;
 
 public class App {
-    public static void main(String[] args) {
-       
+    public void main(String[] args) {
+        
     }
 }

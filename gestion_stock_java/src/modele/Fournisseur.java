@@ -3,7 +3,9 @@ package modele;
 public class Fournisseur {
     private int id;         
     private String nom;      
-    private String contact;  
+    private String contact;
+    private String adresse;
+    private String produits;  
 
 
     
@@ -38,5 +40,14 @@ public class Fournisseur {
         this.contact = contact;
     }
 
+    @Override
+    public String toString() {
+        return "Fournisseur {" 
+        + "id: " + id 
+        + ", nom: " + nom 
+        + ", adresse" + adresse 
+        + ", produits" + produits 
+        + "}";
+    }
     
 }
