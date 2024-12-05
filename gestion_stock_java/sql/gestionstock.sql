@@ -3,7 +3,7 @@ CREATE TABLE produit (
     nom VARCHAR(100) NOT NULL,
     prix DOUBLE NOT NULL,
     quantite INT NOT NULL,
-    FOREIGN KEY (fournisseur_id) REFERENCES fournisseur(id) ON DELETE CASCADE
+    
 );
 
 CREATE TABLE fournisseur (
