@@ -1,4 +1,4 @@
-package vue.src;
+package vue;
 
 public class FournisseurView {
     

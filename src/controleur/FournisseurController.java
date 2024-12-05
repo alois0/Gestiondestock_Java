@@ -1,4 +1,4 @@
-package controleur.src;
+package controleur;
 
 public class FournisseurController {
     
