@@ -1,10 +1,14 @@
 package modele;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Produit {
     private int id;
     private String nom;
     private double prix;
     private int quantite;
+    
 
     public Produit(int id, String nom, double prix, int quantite) {
         this.id = id;

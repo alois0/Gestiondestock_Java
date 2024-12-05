@@ -1,5 +1,9 @@
 package modele;
 
+import java.util.ArrayList;
+import java.util.List;
+
+
 public class Rapport {
     private int id;
     private String nom;

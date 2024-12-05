@@ -1,12 +1,15 @@
 package modele;
 
 import java.util.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Vente {
     private int id;
     private String nom;
     private int quantiteVendue;
     private Date dateVente;
+    private 
 
     
     public Vente(int id, String nom, int quantiteVendue, Date dateVente) {
