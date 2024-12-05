@@ -1,7 +1,5 @@
 package modele;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class Produit {
     private int id;
@@ -47,5 +45,16 @@ public class Produit {
 
     public void setQuantite(int quantite) {
         this.quantite = quantite;
+    }
+
+
+
+    @Override
+    public String toString() {
+        return "Fournisseur{" + "id=" + id +
+                ", nom=" + nom + '\'' +
+                ", prix='" + prix + '\'' +
+                ", quantité=" + quantite +
+                '}';
     }
 }

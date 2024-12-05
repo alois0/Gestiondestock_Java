@@ -9,14 +9,22 @@ public class Vente {
     private String nom;
     private int quantiteVendue;
     private Date dateVente;
-    private 
+    private List<Produit> produits;
+    private List<Rapport> rapports;
+
+    public Vente(){
+        this.rapports = new ArrayList<>();
+        this.produits = new ArrayList<>();
+    }
 
     
-    public Vente(int id, String nom, int quantiteVendue, Date dateVente) {
+    public Vente(int id, String nom, int quantiteVendue, Date dateVente, List<Produit> produits, List<Rapport> rapports ) {
         this.id = id;
         this.nom = nom;
         this.quantiteVendue = quantiteVendue;
         this.dateVente = dateVente;
+        this.produits = produits;
+        this.rapports = rapports;
     }
 
 
@@ -50,6 +58,18 @@ public class Vente {
 
     public void setDateVente(Date dateVente) {
         this.dateVente = dateVente;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Fournisseur{" + "id=" + id +
+                ", nom=" + nom + '\'' +
+                ", quantitévendue='" + quantiteVendue + '\'' +
+                ", date='" + dateVente + '\'' +
+                ", rapport='" + rapports + '\'' +
+                ", produits=" + produits +
+                '}';
     }
 }
 
