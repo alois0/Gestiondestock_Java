@@ -43,12 +43,6 @@ CREATE TABLE vente_rapport (
     FOREIGN KEY (rapport_id) REFERENCES rapport(id) ON DELETE CASCADE
 );
 
-
-
-
-
-
-
 CREATE TABLE livre (
     id INT AUTO_INCREMENT PRIMARY KEY,
     titre VARCHAR(20) NOT NULL,
