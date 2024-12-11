@@ -1,5 +1,6 @@
 package modele;
 
+
 public class Produit {
     private int id;
     private String nom;
@@ -44,5 +45,16 @@ public class Produit {
 
     public void setQuantite(int quantite) {
         this.quantite = quantite;
+    }
+
+
+
+    @Override
+    public String toString() {
+        return "Fournisseur{" + "id=" + id +
+                ", nom=" + nom + '\'' +
+                ", prix='" + prix + '\'' +
+                ", quantité=" + quantite +
+                '}';
     }
 }

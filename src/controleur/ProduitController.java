@@ -1,8 +1,8 @@
 package controleur;
 
-import modele.Produit;
 import java.util.ArrayList;
 import java.util.List;
+import modele.Produit;
 
 public class ProduitController {
     private List<Produit> produits = new ArrayList<>();

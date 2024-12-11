@@ -1,12 +1,13 @@
 package vue;
 
 import controleur.ProduitController;
+import modele.Produit;
+
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
-import modele.Produit;
 
 public class ProduitView extends JFrame {
     private ProduitController controller;
@@ -25,8 +26,8 @@ public class ProduitView extends JFrame {
 
         // Formulaire d'ajout
         JPanel formPanel = new JPanel();
-        JTextField nomField = new JTextField(20);
-        JTextField prixField = new JTextField(20);
+        JTextField nomField = new JTextField(15);
+        JTextField prixField = new JTextField(10);
         JButton ajouterButton = new JButton("Ajouter");
 
         formPanel.add(new JLabel("Nom : "));
