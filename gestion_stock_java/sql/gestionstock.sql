@@ -2,16 +2,17 @@ CREATE TABLE produit (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nom VARCHAR(100) NOT NULL,
     prix DOUBLE NOT NULL,
-    quantite INT NOT NULL,
-    
+    quantite INT NOT NULL
 );
 
 CREATE TABLE fournisseur (
-    Id_Fournisseur INT AUTO_INCREMENT PRIMARY KEY,
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    produit_id INT NOT NULL,
     nom VARCHAR(100) NOT NULL,
-    contact VARCHAR(100) NOT NULL
-    FOREIGN KEY(produit_id) REFERENCES produit(id) ON DELETE CASCADE
+    contact VARCHAR(100) NOT NULL,
+    FOREIGN KEY (produit_id) REFERENCES produit(id) ON DELETE CASCADE
 );
+
 
 /**
 CREATE TABLE fournir (
