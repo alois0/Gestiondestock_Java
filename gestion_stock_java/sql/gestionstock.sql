@@ -7,7 +7,7 @@ CREATE TABLE produit (
 );
 
 CREATE TABLE fournisseur (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    Id_Fournisseur INT AUTO_INCREMENT PRIMARY KEY,
     nom VARCHAR(100) NOT NULL,
     contact VARCHAR(100) NOT NULL
     FOREIGN KEY(produit_id) REFERENCES produit(id) ON DELETE CASCADE

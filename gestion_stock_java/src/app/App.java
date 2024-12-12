@@ -1,12 +1,17 @@
 package app;
 
-import controleur.ProduitController;
-import vue.ProduitView;
+import controleur.FournisseurControler;
+import vue.FournisseurView;
 
 public class App {
     public static void main(String[] args) {
-        ProduitController produitController = new ProduitController();
-        ProduitView produitView = new ProduitView(produitController);
-        produitView.setVisible(true);
+        // Initialiser le contrôleur des fournisseurs
+        FournisseurControler fournisseurController = new FournisseurControler();
+
+        // Initialiser la vue des fournisseurs et l'attacher au contrôleur
+        FournisseurView fournisseurView = new FournisseurView(fournisseurController);
+
+        // Rendre la vue visible
+        fournisseurView.setVisible(true);
     }
 }
