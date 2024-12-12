@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="5249a0f1-82ec-4d54-9dd0-cfafdee1459c" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/javastock.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gestion_stock_java/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gestion_stock_java/.idea/discord.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gestion_stock_java/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gestion_stock_java/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gestion_stock_java/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gestion_stock_java/gestion_stock_java.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gestion_stock_java/bin/app/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/gestion_stock_java/bin/app/App.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gestion_stock_java/bin/controleur/FournisseurControler.class" beforeDir="false" afterPath="$PROJECT_DIR$/gestion_stock_java/bin/controleur/FournisseurControler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gestion_stock_java/bin/vue/FournisseurView.class" beforeDir="false" afterPath="$PROJECT_DIR$/gestion_stock_java/bin/vue/FournisseurView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gestion_stock_java/src/app/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/gestion_stock_java/src/app/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gestion_stock_java/src/controleur/FournisseurControler.java" beforeDir="false" afterPath="$PROJECT_DIR$/gestion_stock_java/src/controleur/FournisseurControler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gestion_stock_java/src/vue/FournisseurView.java" beforeDir="false" afterPath="$PROJECT_DIR$/gestion_stock_java/src/vue/FournisseurView.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
+  <component name="ProjectId" id="2pnk0Ub2ejvlgC1ooBJI3VHIJXh" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "Niko",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-e768b9ed790e-JavaScript-WS-243.21565.180" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="5249a0f1-82ec-4d54-9dd0-cfafdee1459c" name="Changes" comment="" />
+      <created>1733409004928</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1733409004928</updated>
+      <workItem from="1733409007113" duration="22000" />
+      <workItem from="1733828779090" duration="7000" />
+    </task>
+    <servers />
+  </component>
+</project>
