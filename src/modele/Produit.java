@@ -44,4 +44,8 @@ public class Produit {
     public void setQuantite(int quantite) {
         this.quantite = quantite;
     }
+
+    public String toString() {
+        return "Product{id=" + id + ", nom='" + nom + "', prix=" + prix + '}';
+    }
 }
