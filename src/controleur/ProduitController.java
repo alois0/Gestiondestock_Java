@@ -5,22 +5,25 @@ import java.util.List;
 import modele.Produit;
 
 public class ProduitController {
-    private List<Produit> produits = new ArrayList<>();
+    private ProduitView vue;
+    private ProduitDAO produitDAO;
+    private VenteDAO venteDAO;
 
-    public void ajouterProduit(Produit produit) {
-        produits.add(produit);
-    }
 
-    public List<Produit> getProduits() {
-        return produits;
-    }
+    public ProduitController(ProduitView vue, ProduitDAO produitDAO, VenteDAO venteDAO) {
+        this.vue = vue;
+        this.produitDAO = produitDAO;
+        this.venteDAO = venteDAO;
 
-    public Produit trouverProduitParId(int id) {
-        for (Produit produit : produits) {
-            if (produit.getId() == id) {
-                return produit;
-            }
-        }
-        return null;
+        this.vue.setAjouterProduitListener(e -> {
+
+            String nom = vue.getNomProduit();
+            double prix = vue.getPrixProduit();
+            Produit produit = new Produit(0, nom, prix); // L'id sera généré par la DB
+            produitDAO.ajouterProduit(produit);
+            JOptionPane.showMessageDialog(null, "Produit ajouté !");
+
+        });
+
     }
 }
