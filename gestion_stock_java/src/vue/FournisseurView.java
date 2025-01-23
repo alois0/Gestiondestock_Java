@@ -1,6 +1,6 @@
 package vue;
 
-import controleur.FournisseurControler;
+import controleur.FournisseurControlleur;
 import modele.Fournisseur;
 
 import javax.swing.*;
@@ -11,21 +11,19 @@ import java.awt.event.ActionListener;
 import java.util.List;
 
 public class FournisseurView extends JFrame {
-    private FournisseurControler controller;
+    private FournisseurControlleur controller;
     private JTable table;
     private DefaultTableModel tableModel;
 
-    public FournisseurView(FournisseurControler controller) {
+    public FournisseurView(FournisseurControlleur controller) {
         this.controller = controller;
 
         setTitle("Gestion des Fournisseurs");
         setSize(600, 400);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-        // Panel principal
         JPanel panel = new JPanel(new BorderLayout());
 
-        // Formulaire d'ajout
         JPanel formPanel = new JPanel();
         JTextField nomField = new JTextField(15);
         JTextField contactField = new JTextField(15); // Champ de texte pour le contact
@@ -37,20 +35,18 @@ public class FournisseurView extends JFrame {
         formPanel.add(contactField);
         formPanel.add(ajouterButton);
 
-        // Formulaire de recherche
         JTextField rechercheField = new JTextField(15);
         JButton rechercheButton = new JButton("Rechercher");
         formPanel.add(new JLabel("Rechercher : "));
         formPanel.add(rechercheField);
         formPanel.add(rechercheButton);
 
-        // Tableau pour afficher les fournisseurs
+
         String[] columnNames = {"ID", "Nom", "Contact"};
         tableModel = new DefaultTableModel(columnNames, 0);
         table = new JTable(tableModel);
         JScrollPane scrollPane = new JScrollPane(table);
 
-        // Ajouter le tableau et le formulaire au panel principal
         panel.add(formPanel, BorderLayout.NORTH);
         panel.add(scrollPane, BorderLayout.CENTER);
 
@@ -64,7 +60,7 @@ public class FournisseurView extends JFrame {
                     Fournisseur fournisseur = new Fournisseur(0, nom, contact, null);
                     controller.ajouterFournisseur(fournisseur);
 
-                    // Ajouter les données au tableau
+                    // Ajouter au tableau
                     tableModel.addRow(new Object[]{fournisseur.getId(), fournisseur.getNom(), fournisseur.getContact()});
 
                     // Réinitialiser les champs
@@ -79,13 +75,13 @@ public class FournisseurView extends JFrame {
         });
 
 
+
         rechercheButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String rechercheNom = rechercheField.getText();
                 List<Fournisseur> resultats = controller.rechercherFournisseurParNom(rechercheNom);
 
-                // Vider le tableau et ajouter les résultats
                 tableModel.setRowCount(0);
                 for (Fournisseur fournisseur : resultats) {
                     tableModel.addRow(new Object[]{fournisseur.getId(), fournisseur.getNom(), fournisseur.getContact()});

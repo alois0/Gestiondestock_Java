@@ -1,18 +1,34 @@
 package modele;
 
 
+import java.util.List;
+
 public class Produit {
     private int id;
     private String nom;
     private double prix;
     private int quantite;
-    
+
+    private List<Vente> ventes;
+
+
+    public Produit(){
+
+    }
 
     public Produit(int id, String nom, double prix, int quantite) {
         this.id = id;
         this.nom = nom;
         this.prix = prix;
         this.quantite = quantite;
+    }
+
+    public Produit(int id, String nom, double prix, int quantite, List<Vente> ventes) {
+        this.id = id;
+        this.nom = nom;
+        this.prix = prix;
+        this.quantite = quantite;
+        this.ventes = ventes;
     }
 
     public int getId() {

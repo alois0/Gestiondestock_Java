@@ -28,6 +28,7 @@ CREATE TABLE vente (
     nom VARCHAR(100) NOT NULL,
     quantite_vendue INT NOT NULL,
     date_vente DATE NOT NULL
+
 );
 
 CREATE TABLE rapport (
@@ -36,19 +37,14 @@ CREATE TABLE rapport (
     description Text
 );
 
-CREATE TABLE vente_rapport (
-    vente_id INT NOT NULL,
-    rapport_id INT NOT NULL,
-    PRIMARY KEY (vente_id, rapport_id),
-    FOREIGN KEY (vente_id) REFERENCES vente(id) ON DELETE CASCADE,
-    FOREIGN KEY (rapport_id) REFERENCES rapport(id) ON DELETE CASCADE
-);
 
 
 
 
 
 
+
+/**
 
 CREATE TABLE livre (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -85,3 +81,4 @@ CREATE TABLE emprunt (
     date_retour DATE NOT NULL,
 )
 
+**/

@@ -1,4 +1,4 @@
-package controleur;
+package modele.DAO;
 
 import modele.Produit;
 import utils.DatabaseConnection;
@@ -7,13 +7,12 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProduitController {
-    private Connection connection;
+public class ProduitDAO {
 
-    public ProduitController() {
+    private Connection connection;
+    public ProduitDAO() {
         this.connection = DatabaseConnection.getConnection();
     }
-
     public List<Produit> getProduits() {
         String sql = "SELECT * FROM produit";
         List<Produit> produits = new ArrayList<>();
@@ -104,4 +103,6 @@ public class ProduitController {
             System.err.println("Erreur lors de la mise à jour du produit.");
         }
     }
+
+
 }

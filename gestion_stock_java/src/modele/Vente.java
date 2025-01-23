@@ -7,25 +7,33 @@ import java.util.List;
 public class Vente {
     private int id;
     private String nom;
-    private int quantiteVendue;
-    private Date dateVente;
-    private List<Produit> produits;
-    private List<Rapport> rapports;
+    private int quantite_vendue;
+    private Date date_vente;
+    private Produit produit;
 
-    public Vente(){
-        this.rapports = new ArrayList<>();
-        this.produits = new ArrayList<>();
-    }
+
+
 
     
-    public Vente(int id, String nom, int quantiteVendue, Date dateVente, List<Produit> produits, List<Rapport> rapports ) {
-        this.id = id;
+    public Vente(int idvente, String nom, int quantiteVendue, Date dateVente, Produit produit ) {
+        this.id = idvente;
         this.nom = nom;
-        this.quantiteVendue = quantiteVendue;
-        this.dateVente = dateVente;
-        this.produits = produits;
-        this.rapports = rapports;
+        this.quantite_vendue = quantiteVendue;
+        this.date_vente = dateVente;
+        this.produit = produit;
+
     }
+
+
+    public Vente(int idvente, String nom, int quantiteVendue, Date dateVente) {
+        this.id = idvente;
+        this.nom = nom;
+        this.quantite_vendue = quantiteVendue;
+        this.date_vente = dateVente;
+
+    }
+
+
 
 
     public int getId() {
@@ -45,30 +53,37 @@ public class Vente {
     }
 
     public int getQuantiteVendue() {
-        return quantiteVendue;
+        return quantite_vendue;
     }
 
     public void setQuantiteVendue(int quantiteVendue) {
-        this.quantiteVendue = quantiteVendue;
+        this.quantite_vendue = quantiteVendue;
     }
 
     public Date getDateVente() {
-        return dateVente;
+        return date_vente;
     }
 
     public void setDateVente(Date dateVente) {
-        this.dateVente = dateVente;
+        this.date_vente = dateVente;
     }
 
+    public Produit getProduit(){
+        return produit;
+    }
+
+    public void setProduit(Produit produit){
+        this.produit = produit;
+    }
 
     @Override
     public String toString() {
         return "Fournisseur{" + "id=" + id +
                 ", nom=" + nom + '\'' +
-                ", quantitévendue='" + quantiteVendue + '\'' +
-                ", date='" + dateVente + '\'' +
-                ", rapport='" + rapports + '\'' +
-                ", produits=" + produits +
+                ", quantitévendue='" + quantite_vendue + '\'' +
+                ", date='" + date_vente + '\'' +
+
+                ", produits=" + produit +
                 '}';
     }
 }

@@ -46,6 +46,17 @@ public class Fournisseur {
         this.contact = contact;
     }
 
+    public List<Produit> getProduits() {
+        return produits;
+    }
+
+    // Setter pour produits
+    public void setProduits(List<Produit> produits) {
+        this.produits = produits;
+    }
+
+
+
 
     @Override
     public String toString() {
