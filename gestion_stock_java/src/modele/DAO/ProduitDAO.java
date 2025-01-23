@@ -1,7 +1,9 @@
 package modele.DAO;
 
+import modele.Connexion;
+import modele.Fournisseur;
 import modele.Produit;
-import utils.DatabaseConnection;
+
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -10,9 +12,7 @@ import java.util.List;
 public class ProduitDAO {
 
     private Connection connection;
-    public ProduitDAO() {
-        this.connection = DatabaseConnection.getConnection();
-    }
+
     public List<Produit> getProduits() {
         String sql = "SELECT * FROM produit";
         List<Produit> produits = new ArrayList<>();
@@ -103,6 +103,9 @@ public class ProduitDAO {
             System.err.println("Erreur lors de la mise à jour du produit.");
         }
     }
+
+
+
 
 
 }

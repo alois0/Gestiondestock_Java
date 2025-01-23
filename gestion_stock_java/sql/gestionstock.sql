@@ -37,7 +37,11 @@ CREATE TABLE rapport (
     description Text
 );
 
-
+CREATE TABLE user (
+id INT AUTO_INCREMENT PRIMARY KEY,
+nom VARCHAR(100),
+mot_de_passe VARCHAR(100),
+role VARCHAR(20) );
 
 
 
