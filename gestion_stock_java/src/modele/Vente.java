@@ -33,6 +33,13 @@ public class Vente {
 
     }
 
+    public Vente( String nom, int quantiteVendue, Date dateVente) {
+        this.nom = nom;
+        this.quantite_vendue = quantiteVendue;
+        this.date_vente = dateVente;
+
+    }
+
 
 
 

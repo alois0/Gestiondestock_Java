@@ -54,7 +54,7 @@ public class VenteDAO {
     }
 ///*
 public Vente trouverVenteParId(int id) {
-    String sql = " SELECT v.id AS vente_id, v.quantite_vendue, v.date_vente, p.id AS produit_id, p.nom AS produit_nom, p.prix FROM vente v INNER JOIN produit p ON v.produit_id = p.id WHERE v.id = ? """;
+    String sql = " SELECT v.id AS vente_id, v.quantite_vendue, v.date_vente, p.id AS produit_id, p.nom AS produit_nom, p.prix FROM vente v INNER JOIN produit p ON v.produit_id = p.id WHERE v.id = ? ";
     try (PreparedStatement statement = connection.prepareStatement(sql)) {
         statement.setInt(1, id); // Correction : assignation de l'ID avant exécution
         try (ResultSet resultSet = statement.executeQuery()) {
@@ -67,10 +67,10 @@ public Vente trouverVenteParId(int id) {
                 double produitPrix = resultSet.getDouble("prix");
 
                 // Créer le produit
-                Produit produit = new Produit(produitId, produitNom,);
+                Produit produit = new Produit(produitId, produitNom, produitPrix);
 
                 // Retourner l'objet Vente avec le produit associé
-                return new Vente(nom, quantiteVendue, dateVente, produit);
+                return new Vente(nom, quantiteVendue, dateVente);
             }
         }
     } catch (SQLException e) {

@@ -23,6 +23,12 @@ public class Produit {
         this.quantite = quantite;
     }
 
+    public Produit(int id, String nom, double prix) {
+        this.id = id;
+        this.nom = nom;
+        this.prix = prix;
+    }
+
     public Produit(int id, String nom, double prix, int quantite, List<Vente> ventes) {
         this.id = id;
         this.nom = nom;
