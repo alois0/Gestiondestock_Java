@@ -32,7 +32,7 @@ public class Menuview extends JFrame {
         gestionVenteButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new VenteView();
+                new GestionVente(utilisateur);
             }
         });
 

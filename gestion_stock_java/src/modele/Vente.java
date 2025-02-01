@@ -1,48 +1,38 @@
 package modele;
 
 import java.util.Date;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Vente {
     private int id;
-    private String nom;
-    private int quantite_vendue;
-    private Date date_vente;
+    private String nomProduit;
+    private int produitId;
+    private int quantiteVendue;
+    private Date dateVente;
     private Produit produit;
 
-
-
-
-    
-    public Vente(int idvente, String nom, int quantiteVendue, Date dateVente, Produit produit ) {
-        this.id = idvente;
-        this.nom = nom;
-        this.quantite_vendue = quantiteVendue;
-        this.date_vente = dateVente;
+    // 🔹 Constructeur COMPLET avec Produit
+    public Vente(int id, String nomProduit, int produitId, int quantiteVendue, Date dateVente, Produit produit) {
+        this.id = id;
+        this.nomProduit = nomProduit;
+        this.produitId = produitId;
+        this.quantiteVendue = quantiteVendue;
+        this.dateVente = dateVente;
         this.produit = produit;
-
     }
 
-
-    public Vente(int idvente, String nom, int quantiteVendue, Date dateVente) {
-        this.id = idvente;
-        this.nom = nom;
-        this.quantite_vendue = quantiteVendue;
-        this.date_vente = dateVente;
-
+    // 🔹 Constructeur pour une nouvelle vente (sans ID, car auto-généré par la base)
+    public Vente(String nomProduit, int produitId, int quantiteVendue, Date dateVente) {
+        this.nomProduit = nomProduit;
+        this.produitId = produitId;
+        this.quantiteVendue = quantiteVendue;
+        this.dateVente = dateVente;
     }
 
-    public Vente( String nom, int quantiteVendue, Date dateVente) {
-        this.nom = nom;
-        this.quantite_vendue = quantiteVendue;
-        this.date_vente = dateVente;
-
+    public double getMontantTotal() {
+        return produit.getPrix() * quantiteVendue;
     }
 
-
-
-
+    // ✅ Getters et Setters
     public int getId() {
         return id;
     }
@@ -51,47 +41,55 @@ public class Vente {
         this.id = id;
     }
 
-    public String getNom() {
-        return nom;
+    public String getNomProduit() {
+        return nomProduit;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
+    public void setNomProduit(String nomProduit) {
+        this.nomProduit = nomProduit;
+    }
+
+    public int getProduitId() {
+        return produitId;
+    }
+
+    public void setProduitId(int produitId) {
+        this.produitId = produitId;
     }
 
     public int getQuantiteVendue() {
-        return quantite_vendue;
+        return quantiteVendue;
     }
 
     public void setQuantiteVendue(int quantiteVendue) {
-        this.quantite_vendue = quantiteVendue;
+        this.quantiteVendue = quantiteVendue;
     }
 
     public Date getDateVente() {
-        return date_vente;
+        return dateVente;
     }
 
     public void setDateVente(Date dateVente) {
-        this.date_vente = dateVente;
+        this.dateVente = dateVente;
     }
 
-    public Produit getProduit(){
+    public Produit getProduit() {
         return produit;
     }
 
-    public void setProduit(Produit produit){
+    public void setProduit(Produit produit) {
         this.produit = produit;
     }
 
     @Override
     public String toString() {
-        return "Fournisseur{" + "id=" + id +
-                ", nom=" + nom + '\'' +
-                ", quantitévendue='" + quantite_vendue + '\'' +
-                ", date='" + date_vente + '\'' +
-
-                ", produits=" + produit +
+        return "Vente{" +
+                "id=" + id +
+                ", produit='" + nomProduit + '\'' +
+                ", produitId=" + produitId +
+                ", quantiteVendue=" + quantiteVendue +
+                ", dateVente=" + dateVente +
+                ", produit=" + produit +
                 '}';
     }
 }
-

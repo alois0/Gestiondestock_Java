@@ -1,7 +1,6 @@
 package vue;
 
 import controleur.ProduitController;
-import modele.DAO.VenteDAO;
 import modele.User;
 
 import javax.swing.*;

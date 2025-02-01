@@ -20,7 +20,9 @@ CREATE TABLE vente (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nom VARCHAR(100) NOT NULL,
     quantite_vendue INT NOT NULL,
-    date_vente DATE NOT NULL
+    date_vente DATETIME NOT NULL,
+    produit_id INT NOT NULL
+    FOREIGN KEY (produit_id) REFERENCES produit(id) ON DELETE CASCADE;
 
 );
 
