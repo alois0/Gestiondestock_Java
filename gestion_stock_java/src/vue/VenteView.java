@@ -1,87 +1,69 @@
 package vue;
 
-import controleur.VenteController;
-import modele.Vente;
-
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Date;
 
-public class VenteView extends JFrame {
-    private VenteController controller;
-    private JTable table;
-    private DefaultTableModel tableModel;
+public class VenteView {
+    private JFrame frame;
+    private JTextField textFieldProduit;
+    private JTextField textFieldQuantite;
+    private JTextField textFieldDate;
+    private JButton btnAjouterVente;
 
-    public VenteView(VenteController controller) {
-        this.controller = controller;
+    public VenteView() {
+        frame = new JFrame("Gestion des Ventes");
+        frame.setLayout(new FlowLayout());
+        frame.setSize(1000, 500);
+        frame.setLocationRelativeTo(null);
 
-        setTitle("Gestion des Ventes");
-        setSize(600, 400);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        JLabel labelProduit = new JLabel("Produit vendu:");
+        textFieldProduit = new JTextField(20);
 
-        JPanel panel = new JPanel(new BorderLayout());
+        JLabel labelQuantite = new JLabel("Quantité vendue:");
+        textFieldQuantite = new JTextField(20);
 
-        JPanel formPanel = new JPanel();
-        JTextField nomField = new JTextField(15);
-        JTextField quantiteField = new JTextField(10);
-        JButton ajouterButton = new JButton("Ajouter");
+        JLabel labelDate = new JLabel("Date de vente (YYYY-MM-DD):");
+        textFieldDate = new JTextField(20);
 
-        formPanel.add(new JLabel("Nom : "));
-        formPanel.add(nomField);
-        formPanel.add(new JLabel("Quantité Vendue : "));
-        formPanel.add(quantiteField);
-        formPanel.add(ajouterButton);
+        btnAjouterVente = new JButton("Ajouter Vente");
 
-        String[] columnNames = {"ID", "Nom", "Quantité Vendue", "Date de Vente"};
-        tableModel = new DefaultTableModel(columnNames, 0);
-        table = new JTable(tableModel);
-        JScrollPane scrollPane = new JScrollPane(table);
+        frame.add(labelProduit);
+        frame.add(textFieldProduit);
+        frame.add(labelQuantite);
+        frame.add(textFieldQuantite);
+        frame.add(labelDate);
+        frame.add(textFieldDate);
+        frame.add(btnAjouterVente);
 
-        // Charger les ventes au démarrage
-        for (Vente vente : controller.getVentes()) {
-            tableModel.addRow(new Object[]{
-                    vente.getId(),
-                    vente.getNom(),
-                    vente.getQuantiteVendue(),
-                    vente.getDateVente()
-            });
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.setVisible(true);
+    }
+
+    public String getProduitVendu() {
+        return textFieldProduit.getText();
+    }
+
+    public int getQuantiteVendue() {
+        try {
+            return Integer.parseInt(textFieldQuantite.getText());
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(frame, "Veuillez entrer une quantité valide.", "Erreur", JOptionPane.ERROR_MESSAGE);
+            return 0;
         }
+    }
 
-        panel.add(formPanel, BorderLayout.NORTH);
-        panel.add(scrollPane, BorderLayout.CENTER);
+    public String getDateVente() {
+        return textFieldDate.getText();
+    }
 
-        ajouterButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                try {
-                    String nom = nomField.getText();
-                    int quantiteVendue = Integer.parseInt(quantiteField.getText());
-                    Date dateVente = new Date(); // Date actuelle pour la vente
+    public void clearFields() {
+        textFieldProduit.setText("");
+        textFieldQuantite.setText("");
+        textFieldDate.setText("");
+    }
 
-                    Vente vente = new Vente(0, nom, quantiteVendue, dateVente);
-                    controller.ajouterVente(vente);
-
-                    tableModel.addRow(new Object[]{
-                            vente.getId(),
-                            vente.getNom(),
-                            vente.getQuantiteVendue(),
-                            vente.getDateVente()
-                    });
-
-                    nomField.setText("");
-                    quantiteField.setText("");
-
-                    JOptionPane.showMessageDialog(null, "Vente ajoutée avec succès !");
-                } catch (Exception ex) {
-                    JOptionPane.showMessageDialog(null, "Erreur lors de l'ajout de la vente.", "Erreur", JOptionPane.ERROR_MESSAGE);
-                }
-            }
-        });
-
-        add(panel);
+    public void setAjouterVenteListener(ActionListener listener) {
+        btnAjouterVente.addActionListener(listener);
     }
 }
-

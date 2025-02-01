@@ -29,6 +29,9 @@ public class Produit {
         this.prix = prix;
     }
 
+
+
+
     public Produit(int id, String nom, double prix, int quantite, List<Vente> ventes) {
         this.id = id;
         this.nom = nom;
@@ -73,7 +76,7 @@ public class Produit {
 
     @Override
     public String toString() {
-        return "Fournisseur{" + "id=" + id +
+        return "Produit{" + "id=" + id +
                 ", nom=" + nom + '\'' +
                 ", prix='" + prix + '\'' +
                 ", quantité=" + quantite +

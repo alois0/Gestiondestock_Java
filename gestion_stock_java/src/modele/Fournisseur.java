@@ -4,24 +4,35 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Fournisseur {
-    private int id;         
-    private String nom;      
+    private int id;
+    private String nom;
     private String contact;
     private List<Produit> produits;
 
+    // Liste statique de tous les fournisseurs
+    private static List<Fournisseur> fournisseurs = new ArrayList<>();
+
+    // Constructeur par défaut
     public Fournisseur() {
         this.produits = new ArrayList<>();
     }
 
-    
+    // Constructeur avec paramètres
     public Fournisseur(int id, String nom, String contact, List<Produit> produits) {
         this.id = id;
         this.nom = nom;
         this.contact = contact;
-        this.produits = produits;
+        this.produits = (produits != null) ? produits : new ArrayList<>();
     }
 
-    
+
+    public Fournisseur(int id, String nom, String contact) {
+        this.id = id;
+        this.nom = nom;
+        this.contact = contact;
+    }
+
+    // Getters et Setters
     public int getId() {
         return id;
     }
@@ -46,26 +57,21 @@ public class Fournisseur {
         this.contact = contact;
     }
 
-    public List<Produit> getProduits() {
-        return produits;
-    }
-
-    // Setter pour produits
-    public void setProduits(List<Produit> produits) {
-        this.produits = produits;
-    }
 
 
 
 
+
+
+
+    // Méthode toString()
     @Override
     public String toString() {
-        return "Fournisseur{" + "id=" + id +
-                ", nom=" + nom + '\'' +
+        return "Fournisseur{" +
+                "id=" + id +
+                ", nom='" + nom + '\'' +
                 ", contact='" + contact + '\'' +
                 ", produits=" + produits +
                 '}';
     }
-
-    
 }

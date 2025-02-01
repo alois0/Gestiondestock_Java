@@ -1,28 +1,21 @@
+CREATE TABLE fournisseur (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nom VARCHAR(100) NOT NULL,
+    contact VARCHAR(100) NOT NULL
+);
+
 CREATE TABLE produit (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nom VARCHAR(100) NOT NULL,
     prix DOUBLE NOT NULL,
-    quantite INT NOT NULL
-);
-
-CREATE TABLE fournisseur (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    produit_id INT NOT NULL,
-    nom VARCHAR(100) NOT NULL,
-    contact VARCHAR(100) NOT NULL,
-    FOREIGN KEY (produit_id) REFERENCES produit(id) ON DELETE CASCADE
+    quantite INT NOT NULL,
+    fournisseur_id INT, -- Ajout de la clé étrangère pour le fournisseur
+    FOREIGN KEY (fournisseur_id) REFERENCES fournisseur(id) ON DELETE SET NULL
 );
 
 
-/**
-CREATE TABLE fournir (
-    produit_id INT NOT NULL,
-    fournisseur_id INT NOT NULL,
-    PRIMARY KEY (produit_id, fournisseur_id),
-    FOREIGN KEY (produit_id) REFERENCES produit(id) ON DELETE CASCADE,
-    FOREIGN KEY (fournisseur_id) REFERENCES fournisseur(id) ON DELETE CASCADE
-);
-**/
+
+
 CREATE TABLE vente (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nom VARCHAR(100) NOT NULL,

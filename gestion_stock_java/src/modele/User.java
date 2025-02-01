@@ -38,4 +38,8 @@ public class User {
         public void setMotDePasse(String motDePasse) {
         this.motDePasse = motDePasse;
     }
+
+    public String getRole() {
+        return role;
+    }
 }

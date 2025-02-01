@@ -2,32 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5249a0f1-82ec-4d54-9dd0-cfafdee1459c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/gestion_stock_java/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gestion_stock_java/src/controleur/RapportControlleur.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gestion_stock_java/src/controleur/VenteControlleur.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gestion_stock_java/src/vue/Login.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gestion_stock_java/src/vue/MenuView.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gestion_stock_java/src/vue/RapportView.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gestion_stock_java/src/vue/Register.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gestion_stock_java/src/vue/VenteView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gestion_stock_java/out/production/gestion_stock_java/app/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/gestion_stock_java/out/production/gestion_stock_java/app/App.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gestion_stock_java/out/production/gestion_stock_java/controleur/FournisseurControler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gestion_stock_java/out/production/gestion_stock_java/controleur/ProduitController.class" beforeDir="false" afterPath="$PROJECT_DIR$/gestion_stock_java/out/production/gestion_stock_java/controleur/ProduitController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gestion_stock_java/out/production/gestion_stock_java/modele/Fournisseur.class" beforeDir="false" afterPath="$PROJECT_DIR$/gestion_stock_java/out/production/gestion_stock_java/modele/Fournisseur.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gestion_stock_java/out/production/gestion_stock_java/utils/DatabaseConnection.class" beforeDir="false" afterPath="$PROJECT_DIR$/gestion_stock_java/out/production/gestion_stock_java/utils/DatabaseConnection.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gestion_stock_java/out/production/gestion_stock_java/vue/FournisseurView$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/gestion_stock_java/out/production/gestion_stock_java/vue/FournisseurView$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gestion_stock_java/out/production/gestion_stock_java/vue/FournisseurView$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/gestion_stock_java/out/production/gestion_stock_java/vue/FournisseurView$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gestion_stock_java/out/production/gestion_stock_java/vue/FournisseurView.class" beforeDir="false" afterPath="$PROJECT_DIR$/gestion_stock_java/out/production/gestion_stock_java/vue/FournisseurView.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gestion_stock_java/out/production/gestion_stock_java/vue/ProduitView$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/gestion_stock_java/out/production/gestion_stock_java/vue/ProduitView$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gestion_stock_java/out/production/gestion_stock_java/vue/ProduitView.class" beforeDir="false" afterPath="$PROJECT_DIR$/gestion_stock_java/out/production/gestion_stock_java/vue/ProduitView.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gestion_stock_java/sql/gestionstock.sql" beforeDir="false" afterPath="$PROJECT_DIR$/gestion_stock_java/sql/gestionstock.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gestion_stock_java/src/app/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/gestion_stock_java/src/app/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gestion_stock_java/src/controleur/FournisseurControler.java" beforeDir="false" afterPath="$PROJECT_DIR$/gestion_stock_java/src/controleur/FournisseurControlleur.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gestion_stock_java/src/controleur/ProduitController.java" beforeDir="false" afterPath="$PROJECT_DIR$/gestion_stock_java/src/controleur/ProduitController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gestion_stock_java/src/modele/Fournisseur.java" beforeDir="false" afterPath="$PROJECT_DIR$/gestion_stock_java/src/modele/Fournisseur.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gestion_stock_java/src/utils/DatabaseConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/gestion_stock_java/src/utils/DatabaseConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gestion_stock_java/src/vue/FournisseurView.java" beforeDir="false" afterPath="$PROJECT_DIR$/gestion_stock_java/src/vue/FournisseurView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gestion_stock_java/src/vue/ProduitView.java" beforeDir="false" afterPath="$PROJECT_DIR$/gestion_stock_java/src/vue/ProduitView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,6 +11,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
@@ -47,20 +25,16 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;Niko&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/nicob/Documents/javastock&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="bundled-js-predefined-d6986cc7102b-e768b9ed790e-JavaScript-WS-243.21565.180" />
-      </set>
-    </attachedChunks>
-  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">

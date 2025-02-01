@@ -2,7 +2,7 @@ package modele.DAO;
 
 import modele.Produit;
 import modele.Vente;
-import utils.DatabaseConnection;
+import modele.Connexion;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -13,7 +13,7 @@ public class VenteDAO {
 
     private Connection connection;
     public VenteDAO() {
-        this.connection = DatabaseConnection.getConnection();
+        this.connection = Connexion.getConnection();
     }
     public List<Vente> getVente() {
         String sql = "SELECT * FROM produit";

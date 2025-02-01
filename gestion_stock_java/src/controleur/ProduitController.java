@@ -1,17 +1,18 @@
 package controleur;
 
+import modele.Connexion;
 import modele.Produit;
-import utils.DatabaseConnection;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 public class ProduitController {
     private Connection connection;
 
     public ProduitController() {
-        this.connection = DatabaseConnection.getConnection();
+        this.connection = Connexion.getConnection();
     }
 
     public List<Produit> getProduits() {
@@ -39,15 +40,19 @@ public class ProduitController {
             statement.setString(1, produit.getNom());
             statement.setDouble(2, produit.getPrix());
             statement.setInt(3, produit.getQuantite());
-            statement.executeUpdate();
-            ResultSet generatedKeys = statement.getGeneratedKeys();
-            if (generatedKeys.next()) {
-                produit.setId(generatedKeys.getInt(1));
+            int rowsInserted = statement.executeUpdate();
+            if (rowsInserted > 0) {
+                ResultSet generatedKeys = statement.getGeneratedKeys();
+                if (generatedKeys.next()) {
+                    produit.setId(generatedKeys.getInt(1));
+                }
+                System.out.println("✅ Produit ajouté avec succès : " + produit);
+            } else {
+                System.out.println("❌ Aucun produit ajouté !");
             }
-            System.out.println("Produit ajouté : " + produit);
         } catch (SQLException e) {
             e.printStackTrace();
-            System.err.println("Erreur lors de l'ajout du produit.");
+            System.err.println("❌ Erreur lors de l'ajout du produit.");
         }
     }
 
@@ -102,6 +107,41 @@ public class ProduitController {
         } catch (SQLException e) {
             e.printStackTrace();
             System.err.println("Erreur lors de la mise à jour du produit.");
+        }
+    }
+
+    public List<Produit> rechercherProduits(String recherche) {
+        List<Produit> produits = new ArrayList<>();
+        String sql = "SELECT * FROM produit WHERE nom LIKE ?";
+
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setString(1, "%" + recherche + "%");
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                String nom = resultSet.getString("nom");
+                double prix = resultSet.getDouble("prix");
+                int quantite = resultSet.getInt("quantite");
+                produits.add(new Produit(id, nom, prix, quantite));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.err.println("Erreur lors de la recherche des produits.");
+        }
+        return produits;
+    }
+
+    public void verifierStockMinimum(int seuil) {
+        String sql = "SELECT * FROM produit WHERE quantite <= ?";
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setInt(1, seuil);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                System.out.println("⚠️ Attention ! Le produit " + resultSet.getString("nom") + " a un stock faible (" + resultSet.getInt("quantite") + ").");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.err.println("Erreur lors de la vérification du stock minimum.");
         }
     }
 }
