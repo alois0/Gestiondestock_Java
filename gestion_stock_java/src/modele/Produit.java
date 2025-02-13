@@ -11,6 +11,8 @@ public class Produit {
 
     private List<Vente> ventes;
 
+    private String fournisseur;
+
 
     public Produit(){
 
@@ -39,6 +41,14 @@ public class Produit {
         this.quantite = quantite;
         this.ventes = ventes;
     }
+
+    public Produit(int id, String nom, int quantite, String fournisseur) {
+        this.id = id;
+        this.nom = nom;
+        this.quantite = quantite;
+        this.fournisseur = fournisseur;
+    }
+
 
     public int getId() {
         return id;
@@ -72,6 +82,9 @@ public class Produit {
         this.quantite = quantite;
     }
 
+    public String getFournisseur() { // ✅ Ajout du getter
+        return fournisseur;
+    }
 
 
     @Override

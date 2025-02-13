@@ -21,6 +21,7 @@ public class GestionVente extends JFrame {
         JButton ajouterVenteButton = new JButton("Enregistrer une Vente");
         JButton consulterVentesButton = new JButton("Consulter les Ventes");
         JButton supprimerVenteButton = new JButton("Supprimer une Vente");
+        JButton rapportVentesButton = new JButton("Rapport des Ventes");
 
         ajouterVenteButton.addActionListener(e -> {
             System.out.println("📢 Ouverture de l'interface d'enregistrement de vente...");
@@ -37,6 +38,11 @@ public class GestionVente extends JFrame {
             new SupprimerVenteView(); // Ouvre la vue de suppression de vente
         });
 
+        rapportVentesButton.addActionListener(e -> {
+            System.out.println("📢 Ouverture du rapport des ventes...");
+            new RapportVenteView(); // Ouvre la vue du rapport des ventes
+        });
+
         // Désactivation du bouton suppression si l'utilisateur n'est pas autorisé
         if (!utilisateur.getRole().equals("manager")) {
             supprimerVenteButton.setEnabled(false); // Grise le bouton
@@ -45,6 +51,7 @@ public class GestionVente extends JFrame {
         add(ajouterVenteButton);
         add(consulterVentesButton);
         add(supprimerVenteButton);
+        add(rapportVentesButton);
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);

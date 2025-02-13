@@ -23,6 +23,7 @@ public class GestionProduit extends JFrame {
         JButton modifierProduitButton = new JButton("Modifier Produit");
         JButton supprimerProduitButton = new JButton("Supprimer Produit");
         JButton consulterProduitButton = new JButton("Consulter Produits");
+        JButton rapportStockButton = new JButton("Rapport Stock");
 
         ajouterProduitButton.addActionListener(new ActionListener() {
             @Override
@@ -62,6 +63,16 @@ public class GestionProduit extends JFrame {
             }
         });
 
+
+        // ✅ Ajout de l'action pour générer le rapport stock
+        rapportStockButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("📢 Génération du rapport sur l'état du stock...");
+                new RapportStockView();
+            }
+        });
+
 // Désactivation du bouton suppression si l'utilisateur N'EST PAS un manager
         if (!utilisateur.getRole().equals("manager")) {
             supprimerProduitButton.setEnabled(false); // Grise le bouton
@@ -71,6 +82,7 @@ public class GestionProduit extends JFrame {
         add(modifierProduitButton);
         add(supprimerProduitButton);
         add(consulterProduitButton);
+        add(rapportStockButton);
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);

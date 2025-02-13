@@ -22,6 +22,7 @@ public class Menuview extends JFrame {
         JButton gestionVenteButton = new JButton("Gestion Ventes");
         JButton gestionFournisseurButton = new JButton("Gestion Fournisseur");
 
+
         gestionProduitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -36,16 +37,17 @@ public class Menuview extends JFrame {
             }
         });
 
-        gestionFournisseurButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                new GestionFournisseur(utilisateur);
-            }
-        });
+
+
+
+
+
 
         add(gestionProduitButton);
         add(gestionVenteButton);
         add(gestionFournisseurButton);
+
+
 
         // Désactivation des options en fonction du r
 

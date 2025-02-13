@@ -5,6 +5,10 @@ import modele.Produit;
 import modele.Connexion;
 
 import javax.swing.*;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Date;
@@ -198,6 +202,87 @@ public class VenteController {
         }
         return ventes;
     }
+
+
+    public List<Vente> getRapportVentes() {
+        List<Vente> ventes = new ArrayList<>();
+        String sql = "SELECT v.id, v.nom, v.quantite_vendue, v.date_vente, " +
+                "p.id AS produit_id, p.nom AS produit_nom, p.prix " +
+                "FROM vente v " +
+                "JOIN produit p ON v.produit_id = p.id " +
+                "ORDER BY v.date_vente DESC";
+
+        try (PreparedStatement statement = connection.prepareStatement(sql);
+             ResultSet resultSet = statement.executeQuery()) {
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                String nomProduit = resultSet.getString("nom");
+                int quantiteVendue = resultSet.getInt("quantite_vendue");
+                Date dateVente = resultSet.getTimestamp("date_vente");
+
+                int produitId = resultSet.getInt("produit_id");
+                String produitNom = resultSet.getString("produit_nom");
+                double produitPrix = resultSet.getDouble("prix");
+
+                Produit produit = new Produit(produitId, produitNom, produitPrix, 0); // Quantité non récupérée ici
+                Vente vente = new Vente(id, nomProduit, produitId, quantiteVendue, dateVente, produit);
+                ventes.add(vente);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Erreur lors du chargement des ventes !");
+        }
+        return ventes;
+    }
+
+
+
+
+    public void exporterCSVVentes(String[] headers) {
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setDialogTitle("Enregistrer le fichier CSV des ventes");
+
+        int userSelection = fileChooser.showSaveDialog(null);
+        if (userSelection == JFileChooser.APPROVE_OPTION) {
+            File fileToSave = fileChooser.getSelectedFile();
+            String filePath = fileToSave.getAbsolutePath();
+
+            if (!filePath.endsWith(".csv")) {
+                filePath += ".csv";
+            }
+
+            List<Vente> ventes = getHistoriqueVentes(); // Récupérer l'historique des ventes
+
+            try (FileWriter writer = new FileWriter(filePath)) {
+                // Écriture des en-têtes
+                writer.append(String.join(",", headers)).append("\n");
+
+                // Écriture des ventes
+                for (Vente vente : ventes) {
+                    String[] row = {
+                            String.valueOf(vente.getId()),                 // ID de la vente
+                            vente.getNomProduit(),                        // Nom du produit
+                            String.valueOf(vente.getQuantiteVendue()),    // Quantité vendue
+                            vente.getDateVente().toString(),              // Date de la vente
+                            String.valueOf(vente.getMontantTotal())       // Montant total de la vente
+                    };
+
+                    writer.append(String.join(",", row)).append("\n");
+                }
+
+                JOptionPane.showMessageDialog(null, "✅ Export CSV des ventes réussi : " + filePath);
+            } catch (IOException e) {
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(null, "❌ Erreur lors de l'export du CSV des ventes !");
+            }
+        }
+    }
+
+
+
+
+
+
 
 
 

@@ -28,9 +28,22 @@ public class Vente {
         this.dateVente = dateVente;
     }
 
-    public double getMontantTotal() {
-        return produit.getPrix() * quantiteVendue;
+    public Vente(int id, String nomProduit, int quantiteVendue, Date dateVente, double montantTotal) {
+        this.id = id;
+        this.nomProduit = nomProduit;
+        this.quantiteVendue = quantiteVendue;
+        this.dateVente = dateVente;
+        this.produit = null; // Pas besoin d'un objet Produit ici
     }
+
+
+
+
+
+    public double getMontantTotal() {
+        return (produit != null) ? produit.getPrix() * quantiteVendue : 0.0;
+    }
+
 
     // ✅ Getters et Setters
     public int getId() {
