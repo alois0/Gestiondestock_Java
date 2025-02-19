@@ -43,12 +43,15 @@ public class ConsulterProduitView extends JFrame {
         JScrollPane scrollPane = new JScrollPane(tableProduits);
 
         // Bouton retour
-        btnRetour = new JButton("Retour");
+        JPanel panelBouton = new JPanel();
+        btnRetour = createStyledButton("Retour");
         btnRetour.addActionListener(e -> dispose());
+        panelBouton.add(btnRetour);
 
+        // ✅ Ajout des éléments
         add(panelRecherche, BorderLayout.NORTH);
         add(scrollPane, BorderLayout.CENTER);
-        add(btnRetour, BorderLayout.SOUTH);
+        add(panelBouton, BorderLayout.SOUTH);
 
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setVisible(true);
@@ -76,5 +79,31 @@ public class ConsulterProduitView extends JFrame {
                     produit.getQuantite()
             });
         }
+    }
+
+    private JButton createStyledButton(String text) {
+        JButton button = new JButton(text);
+        button.setFont(new Font("Arial", Font.BOLD, 14)); // Texte plus grand
+        button.setBackground(new Color(211, 211, 211)); // Gris clair (Light Gray)
+        button.setForeground(Color.BLACK); // Texte en noir
+        button.setFocusPainted(false);
+        button.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1)); // Bordure fine en gris
+        button.setOpaque(true);
+        button.setBorder(BorderFactory.createEmptyBorder(10, 15, 10, 15)); // Padding interne
+
+        // Effet au survol (hover)
+        button.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                button.setBackground(new Color(169, 169, 169)); // Gris plus foncé (Dark Gray)
+            }
+
+            @Override
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                button.setBackground(new Color(211, 211, 211)); // Retour à la couleur normale
+            }
+        });
+
+        return button;
     }
 }

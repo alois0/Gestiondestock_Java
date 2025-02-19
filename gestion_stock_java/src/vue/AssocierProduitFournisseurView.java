@@ -50,8 +50,8 @@ public class AssocierProduitFournisseurView extends JFrame {
 
         // Boutons
         JPanel panelBoutons = new JPanel();
-        btnAssocier = new JButton("Associer Produits");
-        btnRetour = new JButton("Retour");
+        btnAssocier = createStyledButton("Associer Produits");
+        btnRetour = createStyledButton("Retour");
         panelBoutons.add(btnAssocier);
         panelBoutons.add(btnRetour);
 
@@ -123,6 +123,32 @@ public class AssocierProduitFournisseurView extends JFrame {
 
 
         }
+    }
+
+    private JButton createStyledButton(String text) {
+        JButton button = new JButton(text);
+        button.setFont(new Font("Arial", Font.BOLD, 14)); // Texte plus grand
+        button.setBackground(new Color(211, 211, 211)); // Gris clair (Light Gray)
+        button.setForeground(Color.BLACK); // Texte en noir
+        button.setFocusPainted(false);
+        button.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1)); // Bordure fine en gris
+        button.setOpaque(true);
+        button.setBorder(BorderFactory.createEmptyBorder(10, 15, 10, 15)); // Padding interne
+
+        // Effet au survol (hover)
+        button.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                button.setBackground(new Color(169, 169, 169)); // Gris plus foncé (Dark Gray)
+            }
+
+            @Override
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                button.setBackground(new Color(211, 211, 211)); // Retour à la couleur normale
+            }
+        });
+
+        return button;
     }
 
 }

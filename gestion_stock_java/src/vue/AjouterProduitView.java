@@ -19,32 +19,56 @@ public class AjouterProduitView extends JFrame {
     public AjouterProduitView(User utilisateur) {
         this.utilisateur = utilisateur;
         this.produitController = new ProduitController();
+
         setTitle("Ajouter un Produit");
-        setLayout(new GridLayout(5, 2));
         setSize(400, 250);
+        // Centrer la fenêtre
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setLayout(new GridBagLayout());
 
-        // Champs de saisie
-        add(new JLabel("Nom du Produit:"));
-        textFieldNom = new JTextField();
-        add(textFieldNom);
+        // Gestionnaire de positionnement
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = new Insets(8, 10, 8, 10); // Espacement uniforme
+        gbc.fill = GridBagConstraints.HORIZONTAL;
 
-        add(new JLabel("Prix:"));
-        textFieldPrix = new JTextField();
-        add(textFieldPrix);
+        // Titre
+        JLabel titleLabel = new JLabel("Ajouter un Produit");
+        titleLabel.setFont(new Font("Arial", Font.BOLD, 18));
+        titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        gbc.gridwidth = 2; // Prend toute la ligne
+        gbc.gridy = 0;
+        add(titleLabel, gbc);
 
-        add(new JLabel("Quantité:"));
-        textFieldQuantite = new JTextField();
-        add(textFieldQuantite);
+        // Champs de saisie bien alignés
+        gbc.gridwidth = 1; // Retour à une colonne normale
+        addLabel("Nom du Produit:", gbc, 1);
+        textFieldNom = new JTextField(15);
+        addField(textFieldNom, gbc, 1);
 
-        btnAjouterProduit = new JButton("Ajouter Produit");
-        btnRetour = new JButton("Retour");
-        add(btnAjouterProduit);
-        add(btnRetour);
+        addLabel("Prix:", gbc, 2);
+        textFieldPrix = new JTextField(15);
+        addField(textFieldPrix, gbc, 2);
 
+        addLabel("Quantité:", gbc, 3);
+        textFieldQuantite = new JTextField(15);
+        addField(textFieldQuantite, gbc, 3);
+
+        // Boutons côte à côte
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 0));
+        btnAjouterProduit = createStyledButton("Ajouter Produit");
+        btnRetour = createStyledButton("Retour");
+        buttonPanel.add(btnAjouterProduit);
+        buttonPanel.add(btnRetour);
+
+        gbc.gridwidth = 2;
+        gbc.gridy = 4;
+        add(buttonPanel, gbc);
+
+        // Événements
         btnRetour.addActionListener(e -> dispose());
         btnAjouterProduit.addActionListener(e -> ajouterProduit());
 
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setVisible(true);
     }
 
@@ -75,4 +99,45 @@ public class AjouterProduitView extends JFrame {
         textFieldPrix.setText("");
         textFieldQuantite.setText("");
     }
+
+    private void addLabel(String text, GridBagConstraints gbc, int row) {
+        gbc.gridy = row;
+        gbc.gridx = 0;
+        gbc.anchor = GridBagConstraints.WEST;
+        add(new JLabel(text), gbc);
+    }
+
+    private void addField(JTextField field, GridBagConstraints gbc, int row) {
+        gbc.gridy = row;
+        gbc.gridx = 1;
+        gbc.gridwidth = GridBagConstraints.REMAINDER;
+        add(field, gbc);
+    }
+
+    private JButton createStyledButton(String text) {
+        JButton button = new JButton(text);
+        button.setFont(new Font("Arial", Font.BOLD, 14)); // Texte plus grand
+        button.setBackground(new Color(211, 211, 211)); // Gris clair (Light Gray)
+        button.setForeground(Color.BLACK); // Texte en noir
+        button.setFocusPainted(false);
+        button.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1)); // Bordure fine en gris
+        button.setOpaque(true);
+        button.setBorder(BorderFactory.createEmptyBorder(10, 15, 10, 15)); // Padding interne
+
+        // Effet au survol (hover)
+        button.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                button.setBackground(new Color(169, 169, 169)); // Gris plus foncé (Dark Gray)
+            }
+
+            @Override
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                button.setBackground(new Color(211, 211, 211)); // Retour à la couleur normale
+            }
+        });
+
+        return button;
+    }
+
 }

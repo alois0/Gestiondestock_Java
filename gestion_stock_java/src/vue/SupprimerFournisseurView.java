@@ -30,15 +30,21 @@ public class SupprimerFournisseurView extends JFrame {
         tableFournisseurs = new JTable(tableModel);
         JScrollPane scrollPane = new JScrollPane(tableFournisseurs);
 
-        // Boutons d'action
+        // ✅ Boutons stylisés bien alignés en bas
         JPanel panelBoutons = new JPanel();
-        btnSupprimerFournisseur = new JButton("Supprimer Fournisseur");
-        btnRetour = new JButton("Retour");
+        btnSupprimerFournisseur = createStyledButton("Supprimer Fournisseur");
+        btnRetour = createStyledButton("Retour");
+
         panelBoutons.add(btnSupprimerFournisseur);
         panelBoutons.add(btnRetour);
 
+        // ✅ Panel global pour structurer les boutons
+        JPanel panelBas = new JPanel(new BorderLayout());
+        panelBas.add(panelBoutons, BorderLayout.SOUTH);
+
+        // ✅ Ajouter les éléments correctement
         add(scrollPane, BorderLayout.CENTER);
-        add(panelBoutons, BorderLayout.SOUTH);
+        add(panelBas, BorderLayout.SOUTH);
 
         btnRetour.addActionListener(e -> dispose());
         btnSupprimerFournisseur.addActionListener(e -> supprimerFournisseur());
@@ -76,5 +82,31 @@ public class SupprimerFournisseurView extends JFrame {
             JOptionPane.showMessageDialog(null, "Fournisseur supprimé avec succès !");
             chargerFournisseurs();
         }
+    }
+
+    private JButton createStyledButton(String text) {
+        JButton button = new JButton(text);
+        button.setFont(new Font("Arial", Font.BOLD, 14)); // Texte plus grand
+        button.setBackground(new Color(211, 211, 211)); // Gris clair (Light Gray)
+        button.setForeground(Color.BLACK); // Texte en noir
+        button.setFocusPainted(false);
+        button.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1)); // Bordure fine en gris
+        button.setOpaque(true);
+        button.setBorder(BorderFactory.createEmptyBorder(10, 15, 10, 15)); // Padding interne
+
+        // Effet au survol (hover)
+        button.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                button.setBackground(new Color(169, 169, 169)); // Gris plus foncé (Dark Gray)
+            }
+
+            @Override
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                button.setBackground(new Color(211, 211, 211)); // Retour à la couleur normale
+            }
+        });
+
+        return button;
     }
 }

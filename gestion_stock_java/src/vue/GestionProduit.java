@@ -16,14 +16,30 @@ public class GestionProduit extends JFrame {
         this.utilisateur = utilisateur;
 
         setTitle("Gestion des Produits");
-        setLayout(new FlowLayout());
-        setSize(400, 200);
+        setSize(500, 400);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null); // Centrer la fenêtre
+        setLayout(new GridBagLayout());
 
-        JButton ajouterProduitButton = new JButton("Ajouter Produit");
-        JButton modifierProduitButton = new JButton("Modifier Produit");
-        JButton supprimerProduitButton = new JButton("Supprimer Produit");
-        JButton consulterProduitButton = new JButton("Consulter Produits");
-        JButton rapportStockButton = new JButton("Rapport Stock");
+        // Gestionnaire de positionnement
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = new Insets(10, 10, 10, 10); // Espacement entre les éléments
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.gridwidth = GridBagConstraints.REMAINDER;
+
+        // Titre simpliste
+        JLabel titleLabel = new JLabel("Gestion des Produits");
+        titleLabel.setFont(new Font("Arial", Font.BOLD, 16));
+        titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        add(titleLabel, gbc);
+
+        // Boutons
+        JButton ajouterProduitButton = createStyledButton("Ajouter Produit");
+        JButton modifierProduitButton = createStyledButton("Modifier Produit");
+        JButton supprimerProduitButton = createStyledButton("Supprimer Produit");
+        JButton consulterProduitButton = createStyledButton("Consulter Produits");
+        JButton rapportStockButton = createStyledButton("Rapport Stock");
+        JButton btnRetour = createStyledButton("Retour");
 
         ajouterProduitButton.addActionListener(new ActionListener() {
             @Override
@@ -78,13 +94,46 @@ public class GestionProduit extends JFrame {
             supprimerProduitButton.setEnabled(false); // Grise le bouton
         }
 
-        add(ajouterProduitButton);
-        add(modifierProduitButton);
-        add(supprimerProduitButton);
-        add(consulterProduitButton);
-        add(rapportStockButton);
+        add(ajouterProduitButton, gbc);
+        add(modifierProduitButton, gbc);
+        add(supprimerProduitButton, gbc);
+        add(consulterProduitButton, gbc);
+        add(rapportStockButton, gbc);
+
+        gbc.insets = new Insets(20, 10, 10, 10); // Ajout d’un espacement supplémentaire en haut du bouton retour
+        add(btnRetour, gbc);
+
+        // Action du bouton retour → ferme la fenêtre actuelle
+        btnRetour.addActionListener(e -> dispose());
+
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
+    }
+
+    private JButton createStyledButton(String text) {
+        JButton button = new JButton(text);
+        button.setFont(new Font("Arial", Font.BOLD, 14)); // Texte plus grand
+        button.setBackground(new Color(211, 211, 211)); // Gris clair (Light Gray)
+        button.setForeground(Color.BLACK); // Texte en noir
+        button.setFocusPainted(false);
+        button.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1)); // Bordure fine en gris
+        button.setOpaque(true);
+        button.setBorder(BorderFactory.createEmptyBorder(10, 15, 10, 15)); // Padding interne
+
+        // Effet au survol (hover)
+        button.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                button.setBackground(new Color(169, 169, 169)); // Gris plus foncé (Dark Gray)
+            }
+
+            @Override
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                button.setBackground(new Color(211, 211, 211)); // Retour à la couleur normale
+            }
+        });
+
+        return button;
     }
 }

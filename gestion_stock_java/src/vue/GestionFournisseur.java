@@ -15,15 +15,30 @@ public class GestionFournisseur extends JFrame {
     public GestionFournisseur(User utilisateur) {
         this.utilisateur = utilisateur;
 
-        setTitle("Gestion des Produits");
-        setLayout(new FlowLayout());
-        setSize(400, 200);
+        setTitle("Gestion des Fournisseurs");
+        setSize(500, 400);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null); // Centrer la fenêtre
+        setLayout(new GridBagLayout());
 
-        JButton ajouterFournisseurButton = new JButton("Ajouter Fournisseur");
-        JButton modifierFournisseurButton = new JButton("Modifier Fournisseur");
-        JButton supprimerFournisseurButton = new JButton("Supprimer Fournisseur");
-        JButton ConsulterFournisseurButton = new JButton("Consulter Fournisseur");
-        JButton AssocierProduitFournisseurButton = new JButton( ("Associer Produit"));
+        // Gestionnaire de positionnement
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = new Insets(10, 10, 10, 10); // Espacement entre les éléments
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.gridwidth = GridBagConstraints.REMAINDER;
+
+        // Titre
+        JLabel titleLabel = new JLabel("Gestion des Fournisseurs");
+        titleLabel.setFont(new Font("Arial", Font.BOLD, 16));
+        titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        add(titleLabel, gbc);
+
+        JButton ajouterFournisseurButton = createStyledButton("Ajouter Fournisseur");
+        JButton modifierFournisseurButton = createStyledButton("Modifier Fournisseur");
+        JButton supprimerFournisseurButton = createStyledButton("Supprimer Fournisseur");
+        JButton ConsulterFournisseurButton = createStyledButton("Consulter Fournisseur");
+        JButton AssocierProduitFournisseurButton = createStyledButton( ("Associer Produit"));
+        JButton btnRetour = createStyledButton("Retour");
 
         ajouterFournisseurButton.addActionListener(new ActionListener() {
             @Override
@@ -88,13 +103,46 @@ public class GestionFournisseur extends JFrame {
             supprimerFournisseurButton.setEnabled(false); // Grise le bouton
         }
 
-        add(ajouterFournisseurButton);
-        add(modifierFournisseurButton);
-        add(supprimerFournisseurButton);
-        add(ConsulterFournisseurButton);
-        add(AssocierProduitFournisseurButton);
+        add(ajouterFournisseurButton, gbc);
+        add(modifierFournisseurButton, gbc);
+        add(supprimerFournisseurButton, gbc);
+        add(ConsulterFournisseurButton, gbc);
+        add(AssocierProduitFournisseurButton, gbc);
+
+
+        gbc.insets = new Insets(20, 10, 10, 10); // Ajout d’un espacement supplémentaire en haut du bouton retour
+        add(btnRetour, gbc);
+
+        // Action du bouton retour → ferme la fenêtre actuelle
+        btnRetour.addActionListener(e -> dispose());
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
+    }
+
+    private JButton createStyledButton(String text) {
+        JButton button = new JButton(text);
+        button.setFont(new Font("Arial", Font.BOLD, 14)); // Texte plus grand
+        button.setBackground(new Color(211, 211, 211)); // Gris clair (Light Gray)
+        button.setForeground(Color.BLACK); // Texte en noir
+        button.setFocusPainted(false);
+        button.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1)); // Bordure fine en gris
+        button.setOpaque(true);
+        button.setBorder(BorderFactory.createEmptyBorder(10, 15, 10, 15)); // Padding interne
+
+        // Effet au survol (hover)
+        button.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                button.setBackground(new Color(169, 169, 169)); // Gris plus foncé (Dark Gray)
+            }
+
+            @Override
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                button.setBackground(new Color(211, 211, 211)); // Retour à la couleur normale
+            }
+        });
+
+        return button;
     }
 }

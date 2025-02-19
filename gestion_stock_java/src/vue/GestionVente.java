@@ -15,13 +15,28 @@ public class GestionVente extends JFrame {
         this.venteController = new VenteController();
 
         setTitle("Gestion des Ventes");
-        setLayout(new FlowLayout());
-        setSize(400, 200);
+        setSize(500, 400);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null); // Centrer la fenêtre
+        setLayout(new GridBagLayout());
 
-        JButton ajouterVenteButton = new JButton("Enregistrer une Vente");
-        JButton consulterVentesButton = new JButton("Consulter les Ventes");
-        JButton supprimerVenteButton = new JButton("Supprimer une Vente");
-        JButton rapportVentesButton = new JButton("Rapport des Ventes");
+        // Gestionnaire de positionnement
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = new Insets(10, 10, 10, 10); // Espacement entre les éléments
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.gridwidth = GridBagConstraints.REMAINDER;
+
+        // Titre
+        JLabel titleLabel = new JLabel("Gestion des Ventes");
+        titleLabel.setFont(new Font("Arial", Font.BOLD, 16));
+        titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        add(titleLabel, gbc);
+
+        JButton ajouterVenteButton = createStyledButton("Enregistrer une Vente");
+        JButton consulterVentesButton = createStyledButton("Consulter les Ventes");
+        JButton supprimerVenteButton = createStyledButton("Supprimer une Vente");
+        JButton rapportVentesButton = createStyledButton("Rapport des Ventes");
+        JButton btnRetour = createStyledButton("Retour");
 
         ajouterVenteButton.addActionListener(e -> {
             System.out.println("📢 Ouverture de l'interface d'enregistrement de vente...");
@@ -48,12 +63,46 @@ public class GestionVente extends JFrame {
             supprimerVenteButton.setEnabled(false); // Grise le bouton
         }
 
-        add(ajouterVenteButton);
-        add(consulterVentesButton);
-        add(supprimerVenteButton);
-        add(rapportVentesButton);
+        add(ajouterVenteButton, gbc);
+        add(consulterVentesButton, gbc);
+        add(supprimerVenteButton, gbc);
+        add(rapportVentesButton, gbc);
+
+
+
+        gbc.insets = new Insets(20, 10, 10, 10); // Ajout d’un espacement supplémentaire en haut du bouton retour
+        add(btnRetour, gbc);
+
+        // Action du bouton retour → ferme la fenêtre actuelle
+        btnRetour.addActionListener(e -> dispose());
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
+    }
+
+    private JButton createStyledButton(String text) {
+        JButton button = new JButton(text);
+        button.setFont(new Font("Arial", Font.BOLD, 14)); // Texte plus grand
+        button.setBackground(new Color(211, 211, 211)); // Gris clair (Light Gray)
+        button.setForeground(Color.BLACK); // Texte en noir
+        button.setFocusPainted(false);
+        button.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1)); // Bordure fine en gris
+        button.setOpaque(true);
+        button.setBorder(BorderFactory.createEmptyBorder(10, 15, 10, 15)); // Padding interne
+
+        // Effet au survol (hover)
+        button.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                button.setBackground(new Color(169, 169, 169)); // Gris plus foncé (Dark Gray)
+            }
+
+            @Override
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                button.setBackground(new Color(211, 211, 211)); // Retour à la couleur normale
+            }
+        });
+
+        return button;
     }
 }
