@@ -4,7 +4,9 @@ import controleur.ProduitController;
 import modele.Produit;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 import java.awt.*;
 import java.util.List;
 
@@ -25,6 +27,7 @@ public class RapportStockView extends JFrame {
         String[] columnNames = {"ID", "Produit", "Quantité", "Fournisseur"};
         tableModel = new DefaultTableModel(columnNames, 0);
         tableStock = new JTable(tableModel);
+        styliserTable(tableStock);
         JScrollPane scrollPane = new JScrollPane(tableStock);
 
         // Boutons
@@ -89,5 +92,38 @@ public class RapportStockView extends JFrame {
         });
 
         return button;
+    }
+
+    private void styliserTable(JTable table) {
+        JTableHeader header = table.getTableHeader();
+        header.setFont(new Font("Arial", Font.BOLD, 14));
+        header.setBackground(new Color(180, 180, 180)); // Gris foncé pour l'en-tête
+        header.setForeground(Color.BLACK);
+
+        table.setFont(new Font("Arial", Font.PLAIN, 13));
+        table.setRowHeight(25);
+
+        // ✅ Alignement centré des cellules
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
+
+        for (int i = 0; i < table.getColumnCount(); i++) {
+            table.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+        }
+
+        // ✅ Couleur alternée des lignes
+        table.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
+            @Override
+            public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected,
+                                                           boolean hasFocus, int row, int column) {
+                Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+                if (row % 2 == 0) {
+                    c.setBackground(new Color(230, 230, 230)); // Gris clair pour les lignes paires
+                } else {
+                    c.setBackground(Color.WHITE);
+                }
+                return c;
+            }
+        });
     }
 }

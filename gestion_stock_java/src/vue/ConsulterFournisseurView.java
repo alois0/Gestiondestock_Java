@@ -6,7 +6,9 @@ import modele.Produit;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 import java.awt.*;
 import java.util.List;
 
@@ -36,12 +38,14 @@ public class ConsulterFournisseurView extends JFrame {
         String[] fournisseurColumns = {"ID", "Nom", "Contact"};
         fournisseurTableModel = new DefaultTableModel(fournisseurColumns, 0);
         tableFournisseurs = new JTable(fournisseurTableModel);
+        styliserTable(tableFournisseurs);
         JScrollPane scrollFournisseurs = new JScrollPane(tableFournisseurs);
 
         // Table des produits associés
         String[] produitColumns = {"ID", "Nom", "Prix", "Quantité"};
         produitTableModel = new DefaultTableModel(produitColumns, 0);
         tableProduits = new JTable(produitTableModel);
+        styliserTable(tableProduits);
         JScrollPane scrollProduits = new JScrollPane(tableProduits);
 
         // Bouton désassocié et retour
@@ -158,5 +162,38 @@ public class ConsulterFournisseurView extends JFrame {
         });
 
         return button;
+    }
+
+    private void styliserTable(JTable table) {
+        JTableHeader header = table.getTableHeader();
+        header.setFont(new Font("Arial", Font.BOLD, 14));
+        header.setBackground(new Color(180, 180, 180)); // Gris foncé pour l'en-tête
+        header.setForeground(Color.BLACK);
+
+        table.setFont(new Font("Arial", Font.PLAIN, 13));
+        table.setRowHeight(25);
+
+        // ✅ Alignement centré des cellules
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
+
+        for (int i = 0; i < table.getColumnCount(); i++) {
+            table.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+        }
+
+        // ✅ Couleur alternée des lignes
+        table.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
+            @Override
+            public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected,
+                                                           boolean hasFocus, int row, int column) {
+                Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+                if (row % 2 == 0) {
+                    c.setBackground(new Color(230, 230, 230)); // Gris clair pour les lignes paires
+                } else {
+                    c.setBackground(Color.WHITE);
+                }
+                return c;
+            }
+        });
     }
 }
