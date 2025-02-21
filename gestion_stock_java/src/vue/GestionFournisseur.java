@@ -99,7 +99,7 @@ public class GestionFournisseur extends JFrame {
         });
 
 // Désactivation du bouton suppression si l'utilisateur N'EST PAS un manager
-        if (!utilisateur.getRole().equals("manager")) {
+        if (!utilisateur.getRole().equals("admin")) {
             supprimerFournisseurButton.setEnabled(false); // Grise le bouton
         }
 

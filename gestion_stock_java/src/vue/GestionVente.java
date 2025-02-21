@@ -59,7 +59,7 @@ public class GestionVente extends JFrame {
         });
 
         // Désactivation du bouton suppression si l'utilisateur n'est pas autorisé
-        if (!utilisateur.getRole().equals("manager")) {
+        if (!utilisateur.getRole().equals("admin")) {
             supprimerVenteButton.setEnabled(false); // Grise le bouton
         }
 

@@ -1,35 +1,27 @@
 package app;
 
 import modele.Connexion;
-import vue.Menuview;
+import vue.LoginView;
 
-
-import modele.User;
+import javax.swing.*;
 
 public class App {
     public static void main(String[] args) {
-        System.out.println("🔹 Lancement de l'application...");
+        // 🔹 Utilisation de SwingUtilities pour exécuter l'interface graphique dans le thread principal
+        SwingUtilities.invokeLater(() -> {
+            System.out.println("🔹 Lancement de l'application...");
 
-        // 📌 Vérification de la connexion à la base de données
-        if (Connexion.getConnection() == null) {
-            System.err.println("❌ ERREUR : Impossible de se connecter à la base de données !");
-            return;
-        }
-        System.out.println("✅ Connexion réussie à la base de données !");
+            // 📌 Vérification de la connexion à la base de données
+            if (Connexion.getConnection() == null) {
+                System.err.println("❌ ERREUR : Impossible de se connecter à la base de données !");
+                JOptionPane.showMessageDialog(null, "Erreur : Connexion à la base de données impossible !", "Erreur", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            System.out.println("✅ Connexion réussie à la base de données !");
 
-        // 📌 Création d'un utilisateur simulé (Admin Manager)
-        User utilisateurSimule = new User(1, "admin", "password123", "manager");
-
-        // 📌 Vérification que l'utilisateur est bien créé
-        if (utilisateurSimule == null) {
-            System.err.println("❌ ERREUR : L'utilisateur simulé est null !");
-            return;
-        }
-        System.out.println("👤 Utilisateur simulé : " + utilisateurSimule.getNom() + " (Rôle: " + utilisateurSimule.getRole() + ")");
-
-        // 📌 Lancement du menu principal
-        new Menuview(utilisateurSimule);
-
-        System.out.println("✅ Application lancée avec succès !");
+            // 📌 Lancement de l'interface de connexion
+            new LoginView();
+            System.out.println("✅ Interface de connexion affichée !");
+        });
     }
 }
