@@ -125,6 +125,23 @@ public class VenteController {
         }
     }
 
+
+    public Vente enregistrerVenteTest(Produit produit, int quantiteVendue, Date dateVente) {
+        if (produit == null) {
+            throw new IllegalArgumentException("Produit invalide !");
+        }
+
+        if (quantiteVendue > produit.getQuantite()) {
+            throw new IllegalArgumentException("Stock insuffisant !");
+        }
+
+        produit.setQuantite(produit.getQuantite() - quantiteVendue); // Simuler la mise à jour du stock
+
+        Vente vente = new Vente(0, produit, quantiteVendue, dateVente); // Vente avec Produit associé
+        return vente; // Retourner la vente pour test
+    }
+
+
     // ✅ Récupérer l'historique des ventes
 
 

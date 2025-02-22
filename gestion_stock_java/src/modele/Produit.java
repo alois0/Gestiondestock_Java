@@ -1,6 +1,7 @@
 package modele;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Produit {
@@ -14,9 +15,13 @@ public class Produit {
     private String fournisseur;
 
 
-    public Produit(){
 
+
+    public Produit() {
+        this.ventes = new ArrayList<>(); // ✅ Initialisation ici
     }
+
+
 
     public Produit(int id, String nom, double prix, int quantite) {
         this.id = id;
@@ -31,6 +36,20 @@ public class Produit {
         this.prix = prix;
     }
 
+    public void ajouterVente(Vente vente) {
+        if (ventes == null) {
+            ventes = new ArrayList<>(); // ✅ Empêche NullPointerException
+        }
+        if (vente != null) {
+            this.ventes.add(vente);
+        }
+    }
+
+
+    public List<Vente> getVentes() {
+        return ventes;
+    }
+
 
 
 
@@ -39,7 +58,7 @@ public class Produit {
         this.nom = nom;
         this.prix = prix;
         this.quantite = quantite;
-        this.ventes = ventes;
+        this.ventes = (ventes != null) ? ventes : new ArrayList<>(); // ✅ Évite NullPointerException
     }
 
     public Produit(int id, String nom, int quantite, String fournisseur) {
@@ -48,6 +67,8 @@ public class Produit {
         this.quantite = quantite;
         this.fournisseur = fournisseur;
     }
+
+
 
 
     public int getId() {

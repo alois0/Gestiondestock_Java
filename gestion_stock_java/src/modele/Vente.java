@@ -36,6 +36,14 @@ public class Vente {
         this.produit = null; // Pas besoin d'un objet Produit ici
     }
 
+    public Vente(int id, Produit produit, int quantiteVendue, Date dateVente) {
+        this.id = id;
+        this.produit = produit;
+        this.quantiteVendue = quantiteVendue;
+        this.dateVente = dateVente;
+    }
+
+
 
 
 

@@ -34,10 +34,12 @@ public class LoginView extends JFrame {
 
         add(new JLabel("Nom d'utilisateur:"), gbc);
         textFieldNom = new JTextField(15);
+        styliserChamp(textFieldNom);
         add(textFieldNom, gbc);
 
         add(new JLabel("Mot de passe:"), gbc);
         passwordField = new JPasswordField(15);
+        styliserChamp(passwordField);
         add(passwordField, gbc);
 
         btnConnexion = createStyledButton("Se connecter");
@@ -102,4 +104,31 @@ public class LoginView extends JFrame {
 
         return button;
     }
+
+    private void styliserChamp(JTextField champ) {
+        champ.setFont(new Font("Arial", Font.PLAIN, 14)); // Police et taille du texte
+        champ.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1)); // Bordure grise
+        champ.setBackground(new Color(240, 240, 240)); // Fond gris clair
+        champ.setForeground(Color.BLACK); // Texte noir
+        champ.setOpaque(true);
+        champ.setPreferredSize(new Dimension(200, 30)); // Taille du champ
+        champ.setBorder(BorderFactory.createCompoundBorder(
+                BorderFactory.createLineBorder(Color.DARK_GRAY, 1),
+                BorderFactory.createEmptyBorder(5, 10, 5, 10) // Padding interne
+        ));
+
+        // Effet au survol (hover)
+        champ.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                champ.setBackground(new Color(220, 220, 220)); // Gris plus foncé
+            }
+
+            @Override
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                champ.setBackground(new Color(240, 240, 240)); // Retour à la couleur normale
+            }
+        });
+    }
+
 }
