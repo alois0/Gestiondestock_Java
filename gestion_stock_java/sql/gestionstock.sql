@@ -26,11 +26,6 @@ CREATE TABLE vente (
 
 );
 
-CREATE TABLE rapport (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    nom VARCHAR(100) NOT NULL,
-    description Text
-);
 
 CREATE TABLE user (
 id INT AUTO_INCREMENT PRIMARY KEY,
