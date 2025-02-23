@@ -9,7 +9,7 @@ CREATE TABLE produit (
     nom VARCHAR(100) NOT NULL,
     prix DOUBLE NOT NULL,
     quantite INT NOT NULL,
-    fournisseur_id INT, -- Ajout de la clé étrangère pour le fournisseur
+    fournisseur_id INT,
     FOREIGN KEY (fournisseur_id) REFERENCES fournisseur(id) ON DELETE SET NULL
 );
 
