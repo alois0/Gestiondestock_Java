@@ -1,19 +1,49 @@
 package controleur;
 
-import modele.DAO.UserDAO;
+import modele.Connexion;
 import modele.User;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 public class UserController {
-    private UserDAO userDAO;
+
+    private Connection connection;
     private User utilisateurConnecte;
 
     public UserController() {
-        this.userDAO = new UserDAO();
+
+    }
+
+    public User getUser(String nom, String motDePasse) {
+        String query = "SELECT * FROM utilisateurs WHERE nom = ? AND mot_de_passe = ?";
+
+        try (Connection connection = Connexion.getConnection(); // Correction ici
+             PreparedStatement statement = connection.prepareStatement(query)) {
+
+            statement.setString(1, nom);
+            statement.setString(2, motDePasse);
+
+            ResultSet rs = statement.executeQuery();
+            if (rs.next()) {
+                return new User(
+                        rs.getInt("id"),
+                        rs.getString("nom"),
+                        rs.getString("mot_de_passe"),
+                        rs.getString("role")
+                );
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     // Connexion utilisateur
     public boolean login(String nom, String motDePasse) {
-        utilisateurConnecte = userDAO.getUser(nom, motDePasse);
+        utilisateurConnecte = this.getUser(nom, motDePasse);
         if (utilisateurConnecte != null) {
             System.out.println("Connexion réussie ! Bienvenue, " + utilisateurConnecte.getNom() + " 🎉");
             return true;
