@@ -114,6 +114,8 @@ public class FournisseurController {
     }
 
     public void associerProduitsAFournisseur(int fournisseurId, List<Integer> produitIds) {
+
+
         String sql = "UPDATE produit SET fournisseur_id = ? WHERE id = ?";
         boolean produitAjoute = false; // Vérifier si au moins un produit a été associé
 

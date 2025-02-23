@@ -29,9 +29,9 @@ public class ModifierFournisseurView extends JFrame {
         setTitle("Modifier un Fournisseur");
         setLayout(new BorderLayout());
         setSize(600, 400);
-        setLocationRelativeTo(null); // ✅ Centrer la fenêtre
+        setLocationRelativeTo(null);
 
-        // ✅ Table pour afficher les fournisseurs
+        // Table pour afficher les fournisseurs
         String[] columnNames = {"ID", "Nom", "Contact"};
         tableModel = new DefaultTableModel(columnNames, 0);
         tableFournisseurs = new JTable(tableModel);
@@ -39,7 +39,7 @@ public class ModifierFournisseurView extends JFrame {
         JScrollPane scrollPane = new JScrollPane(tableFournisseurs);
 
 
-        // ✅ Listener pour remplir les champs quand un fournisseur est sélectionné
+        // Listener pour remplir les champs quand un fournisseur est sélectionné
         tableFournisseurs.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
@@ -51,16 +51,18 @@ public class ModifierFournisseurView extends JFrame {
             }
         });
 
-        // ✅ Panel pour modifier un fournisseur sélectionné
+        // Panel pour modifier un fournisseur sélectionné
         JPanel panelModification = new JPanel(new GridLayout(3, 2));
         panelModification.add(new JLabel("Nom du Fournisseur:"));
         textFieldNom = new JTextField();
+        styliserChamp(textFieldNom);
         panelModification.add(textFieldNom);
         panelModification.add(new JLabel("Contact:"));
         textFieldContact = new JTextField();
+        styliserChamp(textFieldContact);
         panelModification.add(textFieldContact);
 
-        // ✅ Panel pour les boutons
+        // Panel pour les boutons
         JPanel panelBoutons = new JPanel();
         btnModifierFournisseur = createStyledButton("Modifier Fournisseur");
         btnRetour = createStyledButton("Retour");
@@ -68,16 +70,16 @@ public class ModifierFournisseurView extends JFrame {
         panelBoutons.add(btnModifierFournisseur);
         panelBoutons.add(btnRetour);
 
-        // ✅ Panel global pour contenir le formulaire + boutons
+        // Panel global pour contenir le formulaire + boutons
         JPanel panelBas = new JPanel(new BorderLayout());
         panelBas.add(panelModification, BorderLayout.CENTER);
         panelBas.add(panelBoutons, BorderLayout.SOUTH);
 
-        // ✅ Ajouter les éléments correctement
+        // Ajouter les éléments correctement
         add(scrollPane, BorderLayout.CENTER);
         add(panelBas, BorderLayout.SOUTH);
 
-        // ✅ Événements des boutons
+        // Événements des boutons
         btnRetour.addActionListener(e -> dispose());
         btnModifierFournisseur.addActionListener(e -> modifierFournisseur());
 
@@ -159,7 +161,7 @@ public class ModifierFournisseurView extends JFrame {
         table.setFont(new Font("Arial", Font.PLAIN, 13));
         table.setRowHeight(25);
 
-        // ✅ Alignement centré des cellules
+        // Alignement centré des cellules
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
         centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
 
@@ -167,7 +169,7 @@ public class ModifierFournisseurView extends JFrame {
             table.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
         }
 
-        // ✅ Couleur alternée des lignes
+        // Couleur alternée des lignes
         table.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
             @Override
             public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected,
@@ -179,6 +181,32 @@ public class ModifierFournisseurView extends JFrame {
                     c.setBackground(Color.WHITE);
                 }
                 return c;
+            }
+        });
+    }
+
+    private void styliserChamp(JTextField champ) {
+        champ.setFont(new Font("Arial", Font.PLAIN, 14)); // Police et taille du texte
+        champ.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1)); // Bordure grise
+        champ.setBackground(new Color(240, 240, 240)); // Fond gris clair
+        champ.setForeground(Color.BLACK); // Texte noir
+        champ.setOpaque(true);
+        champ.setPreferredSize(new Dimension(200, 30)); // Taille du champ
+        champ.setBorder(BorderFactory.createCompoundBorder(
+                BorderFactory.createLineBorder(Color.DARK_GRAY, 1),
+                BorderFactory.createEmptyBorder(5, 10, 5, 10) // Padding interne
+        ));
+
+        // Effet au survol (hover)
+        champ.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                champ.setBackground(new Color(220, 220, 220)); // Gris plus foncé
+            }
+
+            @Override
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                champ.setBackground(new Color(240, 240, 240)); // Retour à la couleur normale
             }
         });
     }

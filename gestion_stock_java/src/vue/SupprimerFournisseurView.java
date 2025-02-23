@@ -9,12 +9,18 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import java.awt.*;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.util.List;
 
 public class SupprimerFournisseurView extends JFrame {
     private JTable tableFournisseurs;
     private DefaultTableModel tableModel;
     private JButton btnSupprimerFournisseur;
+
+    private DefaultTableModel fournisseurTableModel;
+
+    private JTextField textFieldRecherche;
     private JButton btnRetour;
     private FournisseurController fournisseurController;
     private User utilisateur;
@@ -26,6 +32,21 @@ public class SupprimerFournisseurView extends JFrame {
         setLayout(new BorderLayout());
         setSize(600, 400);
 
+
+        // Barre de recherche
+        JPanel panelRecherche = new JPanel();
+        panelRecherche.add(new JLabel("🔎 Rechercher:"));
+        textFieldRecherche = new JTextField(20);
+        styliserChamp(textFieldRecherche);
+        panelRecherche.add(textFieldRecherche);
+
+        textFieldRecherche.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyReleased(KeyEvent e) {
+                rechercherFournisseurs(textFieldRecherche.getText().trim());
+            }
+        });
+
         // Table pour afficher les fournisseurs
         String[] columnNames = {"ID", "Nom", "Contact"};
         tableModel = new DefaultTableModel(columnNames, 0);
@@ -33,7 +54,7 @@ public class SupprimerFournisseurView extends JFrame {
         styliserTable(tableFournisseurs);
         JScrollPane scrollPane = new JScrollPane(tableFournisseurs);
 
-        // ✅ Boutons stylisés bien alignés en bas
+        // Boutons stylisés bien alignés en bas
         JPanel panelBoutons = new JPanel();
         btnSupprimerFournisseur = createStyledButton("Supprimer Fournisseur");
         btnRetour = createStyledButton("Retour");
@@ -41,11 +62,12 @@ public class SupprimerFournisseurView extends JFrame {
         panelBoutons.add(btnSupprimerFournisseur);
         panelBoutons.add(btnRetour);
 
-        // ✅ Panel global pour structurer les boutons
+        // Panel global pour structurer les boutons
         JPanel panelBas = new JPanel(new BorderLayout());
         panelBas.add(panelBoutons, BorderLayout.SOUTH);
 
-        // ✅ Ajouter les éléments correctement
+        // Ajouter les éléments correctement
+        add(panelRecherche, BorderLayout.NORTH);
         add(scrollPane, BorderLayout.CENTER);
         add(panelBas, BorderLayout.SOUTH);
 
@@ -87,6 +109,22 @@ public class SupprimerFournisseurView extends JFrame {
         }
     }
 
+    private void rechercherFournisseurs(String recherche) {
+        List<Fournisseur> fournisseurs = fournisseurController.rechercherFournisseurs(recherche);
+        remplirTableFournisseurs(fournisseurs);
+    }
+
+    private void remplirTableFournisseurs(List<Fournisseur> fournisseurs) {
+        fournisseurTableModel.setRowCount(0);
+        for (Fournisseur fournisseur : fournisseurs) {
+            fournisseurTableModel.addRow(new Object[]{
+                    fournisseur.getId(),
+                    fournisseur.getNom(),
+                    fournisseur.getContact()
+            });
+        }
+    }
+
     private JButton createStyledButton(String text) {
         JButton button = new JButton(text);
         button.setFont(new Font("Arial", Font.BOLD, 14)); // Texte plus grand
@@ -122,7 +160,7 @@ public class SupprimerFournisseurView extends JFrame {
         table.setFont(new Font("Arial", Font.PLAIN, 13));
         table.setRowHeight(25);
 
-        // ✅ Alignement centré des cellules
+        // Alignement centré des cellules
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
         centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
 
@@ -130,7 +168,7 @@ public class SupprimerFournisseurView extends JFrame {
             table.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
         }
 
-        // ✅ Couleur alternée des lignes
+        // Couleur alternée des lignes
         table.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
             @Override
             public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected,
@@ -142,6 +180,32 @@ public class SupprimerFournisseurView extends JFrame {
                     c.setBackground(Color.WHITE);
                 }
                 return c;
+            }
+        });
+    }
+
+    private void styliserChamp(JTextField champ) {
+        champ.setFont(new Font("Arial", Font.PLAIN, 14)); // Police et taille du texte
+        champ.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1)); // Bordure grise
+        champ.setBackground(new Color(240, 240, 240)); // Fond gris clair
+        champ.setForeground(Color.BLACK); // Texte noir
+        champ.setOpaque(true);
+        champ.setPreferredSize(new Dimension(200, 30)); // Taille du champ
+        champ.setBorder(BorderFactory.createCompoundBorder(
+                BorderFactory.createLineBorder(Color.DARK_GRAY, 1),
+                BorderFactory.createEmptyBorder(5, 10, 5, 10) // Padding interne
+        ));
+
+        // Effet au survol (hover)
+        champ.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                champ.setBackground(new Color(220, 220, 220)); // Gris plus foncé
+            }
+
+            @Override
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                champ.setBackground(new Color(240, 240, 240)); // Retour à la couleur normale
             }
         });
     }

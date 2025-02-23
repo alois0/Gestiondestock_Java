@@ -30,8 +30,9 @@ public class AjouterVenteView extends JFrame {
 
         // ✅ Barre de recherche
         JPanel panelRecherche = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        panelRecherche.add(new JLabel("Rechercher:"));
+        panelRecherche.add(new JLabel("🔎 Rechercher:"));
         textFieldRecherche = new JTextField(20);
+        styliserChamp(textFieldRecherche);
         panelRecherche.add(textFieldRecherche);
         textFieldRecherche.addKeyListener(new KeyAdapter() {
             @Override
@@ -40,21 +41,22 @@ public class AjouterVenteView extends JFrame {
             }
         });
 
-        // ✅ Table des produits
+        // Table des produits
         String[] columnNames = {"ID", "Nom", "Prix", "Quantité"};
         tableModel = new DefaultTableModel(columnNames, 0);
         tableProduits = new JTable(tableModel);
         styliserTable(tableProduits);
         JScrollPane scrollPane = new JScrollPane(tableProduits);
 
-        // ✅ Panel pour "Quantité Vendue"
+        // Panel pour "Quantité Vendue"
         JPanel panelQuantite = new JPanel(new FlowLayout(FlowLayout.CENTER));
         JLabel labelQuantiteVendue = new JLabel("Quantité Vendue:");
         textFieldQuantiteVendue = new JTextField(10);
+        styliserChamp(textFieldQuantiteVendue);
         panelQuantite.add(labelQuantiteVendue);
         panelQuantite.add(textFieldQuantiteVendue);
 
-        // ✅ Panel pour les boutons
+        // Panel pour les boutons
         JPanel panelBoutons = new JPanel();
         btnAjouterVente = createStyledButton("Ajouter Vente");
         btnRetour = createStyledButton("Retour");
@@ -64,9 +66,9 @@ public class AjouterVenteView extends JFrame {
         btnRetour.addActionListener(e -> dispose());
         btnAjouterVente.addActionListener(e -> ajouterVente());
 
-        // ✅ Ajout des composants à la fenêtre
+        // Ajout des composants à la fenêtre
         JPanel panelBas = new JPanel(new GridLayout(2, 1));
-        panelBas.add(panelQuantite); // ✅ Ajout du champ "Quantité Vendue"
+        panelBas.add(panelQuantite);
         panelBas.add(panelBoutons);
 
         add(panelRecherche, BorderLayout.NORTH);
@@ -157,13 +159,13 @@ public class AjouterVenteView extends JFrame {
     private void styliserTable(JTable table) {
         JTableHeader header = table.getTableHeader();
         header.setFont(new Font("Arial", Font.BOLD, 14));
-        header.setBackground(new Color(180, 180, 180)); // Gris foncé pour l'en-tête
+        header.setBackground(new Color(180, 180, 180));
         header.setForeground(Color.BLACK);
 
         table.setFont(new Font("Arial", Font.PLAIN, 13));
         table.setRowHeight(25);
 
-        // ✅ Alignement centré des cellules
+        // Alignement centré des cellules
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
         centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
 
@@ -171,7 +173,7 @@ public class AjouterVenteView extends JFrame {
             table.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
         }
 
-        // ✅ Couleur alternée des lignes
+        // Couleur alternée des lignes
         table.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
             @Override
             public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected,
@@ -183,6 +185,32 @@ public class AjouterVenteView extends JFrame {
                     c.setBackground(Color.WHITE);
                 }
                 return c;
+            }
+        });
+    }
+
+    private void styliserChamp(JTextField champ) {
+        champ.setFont(new Font("Arial", Font.PLAIN, 14)); // Police et taille du texte
+        champ.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1)); // Bordure grise
+        champ.setBackground(new Color(240, 240, 240)); // Fond gris clair
+        champ.setForeground(Color.BLACK); // Texte noir
+        champ.setOpaque(true);
+        champ.setPreferredSize(new Dimension(200, 30)); // Taille du champ
+        champ.setBorder(BorderFactory.createCompoundBorder(
+                BorderFactory.createLineBorder(Color.DARK_GRAY, 1),
+                BorderFactory.createEmptyBorder(5, 10, 5, 10) // Padding interne
+        ));
+
+        // Effet au survol (hover)
+        champ.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                champ.setBackground(new Color(220, 220, 220)); // Gris plus foncé
+            }
+
+            @Override
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                champ.setBackground(new Color(240, 240, 240)); // Retour à la couleur normale
             }
         });
     }

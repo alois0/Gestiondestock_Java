@@ -21,7 +21,7 @@ public class VenteController {
         this.connection = Connexion.getConnection();
     }
 
-    // ✅ Récupérer la liste des produits disponibles
+    //  Récupérer la liste des produits disponibles
     public List<Produit> getProduits() {
         List<Produit> produits = new ArrayList<>();
         String sql = "SELECT * FROM produit";
@@ -44,7 +44,7 @@ public class VenteController {
         return produits;
     }
 
-    // ✅ Récupérer la liste des ventes enregistrées
+    //  Récupérer la liste des ventes enregistrées
     public List<Vente> getVentes() {
         List<Vente> ventes = new ArrayList<>();
         String sql = "SELECT v.id, v.nom, v.quantite_vendue, v.date_vente, " +
@@ -78,7 +78,7 @@ public class VenteController {
         return ventes;
     }
 
-    // ✅ Enregistrer une vente avec mise à jour du stock
+    // Enregistrer une vente avec mise à jour du stock
     public void enregistrerVente(String nomProduit, int produitId, int quantiteVendue, Date dateVente) {
         // Vérifier la disponibilité du stock
         String checkStockSql = "SELECT quantite FROM produit WHERE id = ?";
@@ -114,6 +114,10 @@ public class VenteController {
                 updateStatement.setInt(2, produitId);
                 updateStatement.executeUpdate();
 
+                // Vérification du stock après mise à jour
+                ProduitController produitController = new ProduitController();
+                produitController.verifierStockMinimum(produitId, 5);
+
                 JOptionPane.showMessageDialog(null, "✅ Vente enregistrée avec succès !");
             } else {
                 JOptionPane.showMessageDialog(null, "❌ Produit non trouvé !");
@@ -142,10 +146,10 @@ public class VenteController {
     }
 
 
-    // ✅ Récupérer l'historique des ventes
+    // Récupérer l'historique des ventes
 
 
-    // ✅ Supprimer une vente
+    // Supprimer une vente
     public void supprimerVente(int venteId) {
         String sql = "DELETE FROM vente WHERE id = ?";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
@@ -186,6 +190,30 @@ public class VenteController {
 
         return produits;
     }
+
+    public List<Vente> rechercherVentes(String recherche) {
+        List<Vente> ventes = new ArrayList<>();
+        String sql = "SELECT v.id, v.produit_id, p.nom, v.quantite_vendue, v.date_vente, (p.prix * v.quantite_vendue) AS montant_total " +
+                "FROM vente v " +
+                "JOIN produit p ON v.produit_id = p.id " +
+                "WHERE p.nom LIKE ? OR v.date_vente LIKE ?";
+
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.setString(1, "%" + recherche + "%");
+            stmt.setString(2, "%" + recherche + "%");
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                Produit produit = new Produit(rs.getInt("produit_id"), rs.getString("nom"), 0);
+                Vente vente = new Vente(rs.getInt("id"), produit, rs.getInt("quantite_vendue"), rs.getTimestamp("date_vente"));
+                ventes.add(vente);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return ventes;
+    }
+
 
     public List<Vente> getHistoriqueVentes() {
         List<Vente> ventes = new ArrayList<>();

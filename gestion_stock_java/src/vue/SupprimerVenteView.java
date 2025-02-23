@@ -8,12 +8,16 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import java.awt.*;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.util.List;
 
 public class SupprimerVenteView extends JFrame {
     private JTable tableVentes;
     private DefaultTableModel tableModel;
     private JButton btnSupprimer;
+
+    private JTextField textFieldRecherche;
     private JButton btnRetour;
     private VenteController venteController;
 
@@ -23,6 +27,22 @@ public class SupprimerVenteView extends JFrame {
         setLayout(new BorderLayout());
         setSize(600, 400);
 
+        // Barre de recherche
+        JPanel panelRecherche = new JPanel();
+        textFieldRecherche = new JTextField(20);
+        styliserChamp(textFieldRecherche);
+        panelRecherche.add(new JLabel("🔎 Rechercher : "));
+        panelRecherche.add(textFieldRecherche);
+
+        textFieldRecherche.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyReleased(KeyEvent e) {
+                rechercherVentes(textFieldRecherche.getText().trim());
+            }
+        });
+
+
+
         // Table pour afficher les ventes
         String[] columnNames = {"ID", "Produit", "Quantité", "Date"};
         tableModel = new DefaultTableModel(columnNames, 0);
@@ -31,7 +51,7 @@ public class SupprimerVenteView extends JFrame {
         JScrollPane scrollPane = new JScrollPane(tableVentes);
 
         // Boutons
-        // ✅ Boutons stylisés bien alignés en bas
+        // Boutons stylisés bien alignés en bas
         JPanel panelBoutons = new JPanel();
         btnSupprimer = createStyledButton("Supprimer Vente");
         btnRetour = createStyledButton("Retour");
@@ -39,6 +59,7 @@ public class SupprimerVenteView extends JFrame {
         panelBoutons.add(btnSupprimer);
         panelBoutons.add(btnRetour);
 
+        add(panelRecherche, BorderLayout.NORTH);
         add(scrollPane, BorderLayout.CENTER);
         add(panelBoutons, BorderLayout.SOUTH);
 
@@ -85,6 +106,25 @@ public class SupprimerVenteView extends JFrame {
         }
     }
 
+    private void rechercherVentes(String recherche) {
+        List<Vente> ventes = venteController.rechercherVentes(recherche);
+        remplirTable(ventes);
+    }
+
+    private void remplirTable(List<Vente> ventes) {
+        tableModel.setRowCount(0);
+        for (Vente vente : ventes) {
+            tableModel.addRow(new Object[]{
+                    vente.getId(),
+                    vente.getProduit().getNom(), // Nom du produit vendu
+                    vente.getQuantiteVendue(),
+                    vente.getDateVente(),
+                    vente.getMontantTotal()
+            });
+        }
+    }
+
+
     private JButton createStyledButton(String text) {
         JButton button = new JButton(text);
         button.setFont(new Font("Arial", Font.BOLD, 14)); // Texte plus grand
@@ -120,7 +160,7 @@ public class SupprimerVenteView extends JFrame {
         table.setFont(new Font("Arial", Font.PLAIN, 13));
         table.setRowHeight(25);
 
-        // ✅ Alignement centré des cellules
+        // Alignement centré des cellules
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
         centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
 
@@ -128,7 +168,7 @@ public class SupprimerVenteView extends JFrame {
             table.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
         }
 
-        // ✅ Couleur alternée des lignes
+        // Couleur alternée des lignes
         table.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
             @Override
             public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected,
@@ -140,6 +180,32 @@ public class SupprimerVenteView extends JFrame {
                     c.setBackground(Color.WHITE);
                 }
                 return c;
+            }
+        });
+    }
+
+    private void styliserChamp(JTextField champ) {
+        champ.setFont(new Font("Arial", Font.PLAIN, 14)); // Police et taille du texte
+        champ.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1)); // Bordure grise
+        champ.setBackground(new Color(240, 240, 240)); // Fond gris clair
+        champ.setForeground(Color.BLACK); // Texte noir
+        champ.setOpaque(true);
+        champ.setPreferredSize(new Dimension(200, 30)); // Taille du champ
+        champ.setBorder(BorderFactory.createCompoundBorder(
+                BorderFactory.createLineBorder(Color.DARK_GRAY, 1),
+                BorderFactory.createEmptyBorder(5, 10, 5, 10) // Padding interne
+        ));
+
+        // Effet au survol (hover)
+        champ.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                champ.setBackground(new Color(220, 220, 220)); // Gris plus foncé
+            }
+
+            @Override
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                champ.setBackground(new Color(240, 240, 240)); // Retour à la couleur normale
             }
         });
     }

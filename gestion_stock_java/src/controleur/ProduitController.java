@@ -134,19 +134,36 @@ public class ProduitController {
         return produits;
     }
 
-    public void verifierStockMinimum(int seuil) {
-        String sql = "SELECT * FROM produit WHERE quantite <= ?";
+    public void verifierStockMinimum(int produitId, int seuil) {
+        String sql = "SELECT nom, quantite FROM produit WHERE id = ? AND quantite <= ?";
+
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
-            statement.setInt(1, seuil);
+            statement.setInt(1, produitId);
+            statement.setInt(2, seuil);
             ResultSet resultSet = statement.executeQuery();
-            while (resultSet.next()) {
-                System.out.println("⚠️ Attention ! Le produit " + resultSet.getString("nom") + " a un stock faible (" + resultSet.getInt("quantite") + ").");
+
+            if (resultSet.next()) { // ✅ On vérifie seulement ce produit
+                String nomProduit = resultSet.getString("nom");
+                int quantite = resultSet.getInt("quantite");
+
+                String message = "<html>⚠️ <b>Stock bas :</b> <br>"
+                        + "⚠️ <b>" + nomProduit + "</b> : " + quantite + " unités restantes<br>"
+                        + "</html>";
+
+                // 🔥 Afficher immédiatement l'alerte
+                SwingUtilities.invokeLater(() ->
+                        JOptionPane.showMessageDialog(null, message, "Alerte Stock Faible", JOptionPane.WARNING_MESSAGE)
+                );
             }
+
         } catch (SQLException e) {
             e.printStackTrace();
             System.err.println("Erreur lors de la vérification du stock minimum.");
         }
     }
+
+
+
 
     public List<Produit> getEtatStock() {
         List<Produit> produits = new ArrayList<>();

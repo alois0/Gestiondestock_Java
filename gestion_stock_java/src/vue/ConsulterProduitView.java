@@ -27,8 +27,9 @@ public class ConsulterProduitView extends JFrame {
 
         // Barre de recherche
         JPanel panelRecherche = new JPanel();
-        panelRecherche.add(new JLabel("Rechercher:"));
+        panelRecherche.add(new JLabel("🔎 Rechercher:"));
         textFieldRecherche = new JTextField(20);
+        styliserChamp(textFieldRecherche);
         panelRecherche.add(textFieldRecherche);
 
         textFieldRecherche.addKeyListener(new KeyAdapter() {
@@ -51,7 +52,7 @@ public class ConsulterProduitView extends JFrame {
         btnRetour.addActionListener(e -> dispose());
         panelBouton.add(btnRetour);
 
-        // ✅ Ajout des éléments
+        // Ajout des éléments
         add(panelRecherche, BorderLayout.NORTH);
         add(scrollPane, BorderLayout.CENTER);
         add(panelBouton, BorderLayout.SOUTH);
@@ -127,7 +128,7 @@ public class ConsulterProduitView extends JFrame {
             table.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
         }
 
-        // ✅ Couleur alternée des lignes
+        // Couleur alternée des lignes
         table.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
             @Override
             public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected,
@@ -139,6 +140,32 @@ public class ConsulterProduitView extends JFrame {
                     c.setBackground(Color.WHITE);
                 }
                 return c;
+            }
+        });
+    }
+
+    private void styliserChamp(JTextField champ) {
+        champ.setFont(new Font("Arial", Font.PLAIN, 14)); // Police et taille du texte
+        champ.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1)); // Bordure grise
+        champ.setBackground(new Color(240, 240, 240)); // Fond gris clair
+        champ.setForeground(Color.BLACK); // Texte noir
+        champ.setOpaque(true);
+        champ.setPreferredSize(new Dimension(200, 30)); // Taille du champ
+        champ.setBorder(BorderFactory.createCompoundBorder(
+                BorderFactory.createLineBorder(Color.DARK_GRAY, 1),
+                BorderFactory.createEmptyBorder(5, 10, 5, 10) // Padding interne
+        ));
+
+        // Effet au survol (hover)
+        champ.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                champ.setBackground(new Color(220, 220, 220)); // Gris plus foncé
+            }
+
+            @Override
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                champ.setBackground(new Color(240, 240, 240)); // Retour à la couleur normale
             }
         });
     }

@@ -44,10 +44,12 @@ public class AjouterFournisseurView extends JFrame {
         gbc.gridwidth = 1; // Retour à une seule colonne
         addLabel("Nom du Fournisseur:", gbc, 1);
         textFieldNom = new JTextField(15);
+        styliserChamp(textFieldNom);
         addField(textFieldNom, gbc, 1);
 
         addLabel("Contact:", gbc, 2);
         textFieldContact = new JTextField(15);
+        styliserChamp(textFieldContact);
         addField(textFieldContact, gbc, 2);
 
         // **Boutons bien alignés en bas**
@@ -124,5 +126,31 @@ public class AjouterFournisseurView extends JFrame {
         });
 
         return button;
+    }
+
+    private void styliserChamp(JTextField champ) {
+        champ.setFont(new Font("Arial", Font.PLAIN, 14)); // Police et taille du texte
+        champ.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1)); // Bordure grise
+        champ.setBackground(new Color(240, 240, 240)); // Fond gris clair
+        champ.setForeground(Color.BLACK); // Texte noir
+        champ.setOpaque(true);
+        champ.setPreferredSize(new Dimension(200, 30)); // Taille du champ
+        champ.setBorder(BorderFactory.createCompoundBorder(
+                BorderFactory.createLineBorder(Color.DARK_GRAY, 1),
+                BorderFactory.createEmptyBorder(5, 10, 5, 10) // Padding interne
+        ));
+
+        // Effet au survol (hover)
+        champ.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                champ.setBackground(new Color(220, 220, 220)); // Gris plus foncé
+            }
+
+            @Override
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                champ.setBackground(new Color(240, 240, 240)); // Retour à la couleur normale
+            }
+        });
     }
 }
