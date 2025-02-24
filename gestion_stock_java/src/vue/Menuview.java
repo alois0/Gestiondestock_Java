@@ -6,16 +6,22 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 
+import controleur.UserController;
 import modele.User;
 
 public class Menuview extends JFrame {
 
     private User utilisateur;
 
+    private UserController userController;
+
+
     public Menuview(User utilisateur) {
         this.utilisateur = utilisateur;
+        this.userController = new UserController();
+
         setTitle("Menu Principal");
-        setSize(400, 250);
+        setSize(400, 350);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null); // Centrer la fenêtre
         setLayout(new GridBagLayout());
@@ -36,6 +42,7 @@ public class Menuview extends JFrame {
         JButton gestionProduitButton = createStyledButton("Gestion Produit");
         JButton gestionVenteButton = createStyledButton("Gestion Ventes");
         JButton gestionFournisseurButton = createStyledButton("Gestion Fournisseur");
+        JButton btnQuitter = createStyledButton("Quitter");
 
 
         gestionProduitButton.addActionListener(new ActionListener() {
@@ -60,6 +67,14 @@ public class Menuview extends JFrame {
         });
 
 
+        btnQuitter.addActionListener(e -> {
+
+            userController.logout();
+            dispose(); // Ferme le menu
+            new LoginView(); // Ouvre la fenêtre de connexion
+        });
+
+
 
 
 
@@ -68,6 +83,7 @@ public class Menuview extends JFrame {
         add(gestionProduitButton, gbc);
         add(gestionVenteButton, gbc);
         add(gestionFournisseurButton, gbc);
+        add(btnQuitter, gbc);
 
 
 

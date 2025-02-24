@@ -77,20 +77,43 @@ public class FournisseurController {
     }
 
     public void supprimerFournisseur(int id) {
+        // Vérifier si le fournisseur est associé à des produits
+        if (estFournisseurAssocieAProduits(id)) {
+            JOptionPane.showMessageDialog(null, "⛔ Impossible de supprimer ce fournisseur !\nIl est encore associé à des produits.\nVeuillez réattribuer ces produits à un autre fournisseur avant suppression.", "Alerte", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
         String sql = "DELETE FROM fournisseur WHERE id = ?";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setInt(1, id);
             int rowsDeleted = statement.executeUpdate();
             if (rowsDeleted > 0) {
-                System.out.println("Fournisseur avec l'ID " + id + " supprimé.");
+                System.out.println("✅ Fournisseur supprimé avec succès.");
             } else {
-                System.out.println("Aucun fournisseur trouvé avec l'ID " + id);
+                System.out.println("❌ Aucun fournisseur trouvé avec cet ID.");
             }
         } catch (SQLException e) {
             e.printStackTrace();
             System.err.println("Erreur lors de la suppression du fournisseur.");
         }
     }
+
+
+    public boolean estFournisseurAssocieAProduits(int fournisseurId) {
+        String sql = "SELECT COUNT(*) FROM produit WHERE fournisseur_id = ?";
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setInt(1, fournisseurId);
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                return resultSet.getInt(1) > 0; // Si le nombre de produits > 0, alors il est encore associé
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+
 
     public List<Fournisseur> rechercherFournisseurs(String recherche) {
         List<Fournisseur> fournisseurs = new ArrayList<>();

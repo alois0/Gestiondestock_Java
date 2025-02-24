@@ -104,7 +104,6 @@ public class SupprimerFournisseurView extends JFrame {
         int confirmation = JOptionPane.showConfirmDialog(null, "Êtes-vous sûr de vouloir supprimer ce fournisseur ?", "Confirmation", JOptionPane.YES_NO_OPTION);
         if (confirmation == JOptionPane.YES_OPTION) {
             fournisseurController.supprimerFournisseur(id);
-            JOptionPane.showMessageDialog(null, "Fournisseur supprimé avec succès !");
             chargerFournisseurs();
         }
     }

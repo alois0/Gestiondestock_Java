@@ -1,46 +1,48 @@
 package vue;
 
 import controleur.ProduitController;
+import controleur.FournisseurController;
 import modele.Produit;
+import modele.Fournisseur;
 import modele.User;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.List;
 
 public class AjouterProduitView extends JFrame {
     private JTextField textFieldNom;
     private JTextField textFieldPrix;
     private JTextField textFieldQuantite;
+    private JComboBox<String> comboBoxFournisseur;
     private JButton btnAjouterProduit;
     private JButton btnRetour;
     private ProduitController produitController;
+    private FournisseurController fournisseurController;
     private User utilisateur;
 
     public AjouterProduitView(User utilisateur) {
         this.utilisateur = utilisateur;
         this.produitController = new ProduitController();
+        this.fournisseurController = new FournisseurController();
 
         setTitle("Ajouter un Produit");
-        setSize(400, 250);
-        // Centrer la fenêtre
+        setSize(400, 300);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLayout(new GridBagLayout());
 
-        // Gestionnaire de positionnement
         GridBagConstraints gbc = new GridBagConstraints();
-        gbc.insets = new Insets(8, 10, 8, 10); // Espacement uniforme
+        gbc.insets = new Insets(8, 10, 8, 10);
         gbc.fill = GridBagConstraints.HORIZONTAL;
 
-        // Titre
         JLabel titleLabel = new JLabel("Ajouter un Produit");
         titleLabel.setFont(new Font("Arial", Font.BOLD, 18));
         titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
-        gbc.gridwidth = 2; // Prend toute la ligne
+        gbc.gridwidth = 2;
         gbc.gridy = 0;
         add(titleLabel, gbc);
 
-        // Champs de saisie bien alignés
-        gbc.gridwidth = 1; // Retour à une colonne normale
+        gbc.gridwidth = 1;
         addLabel("Nom du Produit:", gbc, 1);
         textFieldNom = new JTextField(15);
         styliserChamp(textFieldNom);
@@ -56,7 +58,11 @@ public class AjouterProduitView extends JFrame {
         styliserChamp(textFieldQuantite);
         addField(textFieldQuantite, gbc, 3);
 
-        // Boutons côte à côte
+        addLabel("Fournisseur:", gbc, 4);
+        comboBoxFournisseur = new JComboBox<>();
+        chargerFournisseurs();
+        addField(comboBoxFournisseur, gbc, 4);
+
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 0));
         btnAjouterProduit = createStyledButton("Ajouter Produit");
@@ -65,14 +71,21 @@ public class AjouterProduitView extends JFrame {
         buttonPanel.add(btnRetour);
 
         gbc.gridwidth = 2;
-        gbc.gridy = 4;
+        gbc.gridy = 5;
         add(buttonPanel, gbc);
 
-        // Événements
         btnRetour.addActionListener(e -> dispose());
         btnAjouterProduit.addActionListener(e -> ajouterProduit());
 
         setVisible(true);
+    }
+
+    private void chargerFournisseurs() {
+        List<Fournisseur> fournisseurs = fournisseurController.getFournisseurs();
+        comboBoxFournisseur.addItem("Sélectionnez un fournisseur");
+        for (Fournisseur fournisseur : fournisseurs) {
+            comboBoxFournisseur.addItem(fournisseur.getId() + " - " + fournisseur.getNom());
+        }
     }
 
     private void ajouterProduit() {
@@ -84,23 +97,56 @@ public class AjouterProduitView extends JFrame {
             prix = Double.parseDouble(textFieldPrix.getText().trim());
             quantite = Integer.parseInt(textFieldQuantite.getText().trim());
         } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(null, "Veuillez entrer des valeurs valides pour le prix et la quantité !");
+            JOptionPane.showMessageDialog(null, "Veuillez entrer des valeurs valides pour le prix et la quantité !", "Erreur", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
         if (nom.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Le nom du produit ne peut pas être vide !");
+            JOptionPane.showMessageDialog(null, "Le nom du produit ne peut pas être vide !", "Erreur", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
-        Produit produit = new Produit(0, nom, prix, quantite);
-        produitController.ajouterProduit(produit);
-        JOptionPane.showMessageDialog(null, "Produit ajouté avec succès !");
+        if (comboBoxFournisseur.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(null, "Veuillez sélectionner un fournisseur !", "Erreur", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
 
-        // Effacer les champs après l'ajout
-        textFieldNom.setText("");
-        textFieldPrix.setText("");
-        textFieldQuantite.setText("");
+        // ✅ Récupération de l'ID du fournisseur
+        String selectedItem = (String) comboBoxFournisseur.getSelectedItem();
+        int fournisseurId = 0;
+
+        if (selectedItem != null && selectedItem.contains(" - ")) {
+            try {
+                fournisseurId = Integer.parseInt(selectedItem.split(" - ")[0].trim());
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Erreur lors de la récupération de l'ID fournisseur !", "Erreur", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Sélection du fournisseur invalide !", "Erreur", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        System.out.println("ID du fournisseur sélectionné : " + fournisseurId); // 🔎 Debug
+
+        if (fournisseurId == 0) {
+            JOptionPane.showMessageDialog(null, "Erreur : Aucun fournisseur valide sélectionné !", "Erreur", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // ✅ Création et ajout du produit avec l'ID du fournisseur
+        Produit produit = new Produit(0, nom, prix, quantite, fournisseurId);
+        boolean success = produitController.ajouterProduit(produit);
+
+        if (success) {
+            JOptionPane.showMessageDialog(null, "Produit ajouté avec succès !");
+            textFieldNom.setText("");
+            textFieldPrix.setText("");
+            textFieldQuantite.setText("");
+            comboBoxFournisseur.setSelectedIndex(0);
+        } else {
+            JOptionPane.showMessageDialog(null, "Erreur lors de l'ajout du produit !", "Erreur", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     private void addLabel(String text, GridBagConstraints gbc, int row) {
@@ -110,7 +156,7 @@ public class AjouterProduitView extends JFrame {
         add(new JLabel(text), gbc);
     }
 
-    private void addField(JTextField field, GridBagConstraints gbc, int row) {
+    private void addField(JComponent field, GridBagConstraints gbc, int row) {
         gbc.gridy = row;
         gbc.gridx = 1;
         gbc.gridwidth = GridBagConstraints.REMAINDER;
@@ -119,24 +165,23 @@ public class AjouterProduitView extends JFrame {
 
     private JButton createStyledButton(String text) {
         JButton button = new JButton(text);
-        button.setFont(new Font("Arial", Font.BOLD, 14)); // Texte plus grand
-        button.setBackground(new Color(211, 211, 211)); // Gris clair (Light Gray)
-        button.setForeground(Color.BLACK); // Texte en noir
+        button.setFont(new Font("Arial", Font.BOLD, 14));
+        button.setBackground(new Color(211, 211, 211));
+        button.setForeground(Color.BLACK);
         button.setFocusPainted(false);
-        button.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1)); // Bordure fine en gris
+        button.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
         button.setOpaque(true);
-        button.setBorder(BorderFactory.createEmptyBorder(10, 15, 10, 15)); // Padding interne
+        button.setBorder(BorderFactory.createEmptyBorder(10, 15, 10, 15));
 
-        // Effet au survol (hover)
         button.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                button.setBackground(new Color(169, 169, 169)); // Gris plus foncé (Dark Gray)
+                button.setBackground(new Color(169, 169, 169));
             }
 
             @Override
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                button.setBackground(new Color(211, 211, 211)); // Retour à la couleur normale
+                button.setBackground(new Color(211, 211, 211));
             }
         });
 
@@ -144,29 +189,15 @@ public class AjouterProduitView extends JFrame {
     }
 
     private void styliserChamp(JTextField champ) {
-        champ.setFont(new Font("Arial", Font.PLAIN, 14)); // Police et taille du texte
-        champ.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1)); // Bordure grise
-        champ.setBackground(new Color(240, 240, 240)); // Fond gris clair
-        champ.setForeground(Color.BLACK); // Texte noir
+        champ.setFont(new Font("Arial", Font.PLAIN, 14));
+        champ.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
+        champ.setBackground(new Color(240, 240, 240));
+        champ.setForeground(Color.BLACK);
         champ.setOpaque(true);
-        champ.setPreferredSize(new Dimension(200, 30)); // Taille du champ
+        champ.setPreferredSize(new Dimension(200, 30));
         champ.setBorder(BorderFactory.createCompoundBorder(
                 BorderFactory.createLineBorder(Color.DARK_GRAY, 1),
-                BorderFactory.createEmptyBorder(5, 10, 5, 10) // Padding interne
+                BorderFactory.createEmptyBorder(5, 10, 5, 10)
         ));
-
-        // Effet au survol (hover)
-        champ.addMouseListener(new java.awt.event.MouseAdapter() {
-            @Override
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                champ.setBackground(new Color(220, 220, 220)); // Gris plus foncé
-            }
-
-            @Override
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                champ.setBackground(new Color(240, 240, 240)); // Retour à la couleur normale
-            }
-        });
     }
-
 }

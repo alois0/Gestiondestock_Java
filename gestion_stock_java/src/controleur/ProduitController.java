@@ -37,27 +37,25 @@ public class ProduitController {
         return produits;
     }
 
-    public void ajouterProduit(Produit produit) {
-        String sql = "INSERT INTO produit (nom, prix, quantite) VALUES (?, ?, ?)";
-        try (PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
-            statement.setString(1, produit.getNom());
-            statement.setDouble(2, produit.getPrix());
-            statement.setInt(3, produit.getQuantite());
-            int rowsInserted = statement.executeUpdate();
-            if (rowsInserted > 0) {
-                ResultSet generatedKeys = statement.getGeneratedKeys();
-                if (generatedKeys.next()) {
-                    produit.setId(generatedKeys.getInt(1));
-                }
-                System.out.println("✅ Produit ajouté avec succès : " + produit);
-            } else {
-                System.out.println("❌ Aucun produit ajouté !");
-            }
+    public boolean ajouterProduit(Produit produit) {
+        String sql = "INSERT INTO produit (nom, prix, quantite, fournisseur_id) VALUES (?, ?, ?, ?)";
+
+        try (Connection conn = Connexion.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setString(1, produit.getNom());
+            stmt.setDouble(2, produit.getPrix());
+            stmt.setInt(3, produit.getQuantite());
+            stmt.setInt(4, produit.getFournisseurId());
+
+            int rowsAffected = stmt.executeUpdate();
+            return rowsAffected > 0;  // ✅ Retourne `true` si l'ajout a réussi
         } catch (SQLException e) {
             e.printStackTrace();
-            System.err.println("❌ Erreur lors de l'ajout du produit.");
+            return false;  // ✅ Retourne `false` en cas d'erreur
         }
     }
+
 
     public Produit trouverProduitParId(int id) {
         String sql = "SELECT * FROM produit WHERE id = ?";
