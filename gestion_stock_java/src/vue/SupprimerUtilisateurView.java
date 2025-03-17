@@ -136,7 +136,7 @@ public class SupprimerUtilisateurView extends JFrame {
         button.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                button.setBackground(new Color(169, 169, 169)); // Gris foncé
+                button.setBackground(new Color(169, 169, 169));
             }
 
             @Override

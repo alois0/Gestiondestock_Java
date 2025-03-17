@@ -181,7 +181,7 @@ public class ModifierProduitView extends JFrame {
         button.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                button.setBackground(new Color(169, 169, 169)); // Gris foncé
+                button.setBackground(new Color(169, 169, 169));
             }
 
             @Override
@@ -197,7 +197,7 @@ public class ModifierProduitView extends JFrame {
     private void styliserTable(JTable table) {
         JTableHeader header = table.getTableHeader();
         header.setFont(new Font("Arial", Font.BOLD, 14));
-        header.setBackground(new Color(180, 180, 180)); // Gris foncé pour l'en-tête
+        header.setBackground(new Color(180, 180, 180));
         header.setForeground(Color.BLACK);
 
         table.setFont(new Font("Arial", Font.PLAIN, 13));
@@ -218,7 +218,7 @@ public class ModifierProduitView extends JFrame {
                                                            boolean hasFocus, int row, int column) {
                 Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
                 if (row % 2 == 0) {
-                    c.setBackground(new Color(230, 230, 230)); // Gris clair pour les lignes paires
+                    c.setBackground(new Color(230, 230, 230));
                 } else {
                     c.setBackground(Color.WHITE);
                 }
@@ -228,27 +228,26 @@ public class ModifierProduitView extends JFrame {
     }
 
     private void styliserChamp(JTextField champ) {
-        champ.setFont(new Font("Arial", Font.PLAIN, 14)); // Police et taille du texte
-        champ.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1)); // Bordure grise
-        champ.setBackground(new Color(240, 240, 240)); // Fond gris clair
-        champ.setForeground(Color.BLACK); // Texte noir
+        champ.setFont(new Font("Arial", Font.PLAIN, 14));
+        champ.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
+        champ.setBackground(new Color(240, 240, 240));
+        champ.setForeground(Color.BLACK);
         champ.setOpaque(true);
-        champ.setPreferredSize(new Dimension(200, 30)); // Taille du champ
+        champ.setPreferredSize(new Dimension(200, 30));
         champ.setBorder(BorderFactory.createCompoundBorder(
                 BorderFactory.createLineBorder(Color.DARK_GRAY, 1),
-                BorderFactory.createEmptyBorder(5, 10, 5, 10) // Padding interne
+                BorderFactory.createEmptyBorder(5, 10, 5, 10)
         ));
 
-        // Effet au survol (hover)
         champ.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                champ.setBackground(new Color(220, 220, 220)); // Gris plus foncé
+                champ.setBackground(new Color(220, 220, 220));
             }
 
             @Override
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                champ.setBackground(new Color(240, 240, 240)); // Retour à la couleur normale
+                champ.setBackground(new Color(240, 240, 240));
             }
         });
     }

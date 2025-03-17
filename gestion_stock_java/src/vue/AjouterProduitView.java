@@ -134,7 +134,6 @@ public class AjouterProduitView extends JFrame {
             return;
         }
 
-        // ✅ Création et ajout du produit avec l'ID du fournisseur
         Produit produit = new Produit(0, nom, prix, quantite, fournisseurId);
         boolean success = produitController.ajouterProduit(produit);
 

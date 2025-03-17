@@ -17,10 +17,10 @@ public class GestionVente extends JFrame {
         setTitle("Gestion des Ventes");
         setSize(500, 400);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLocationRelativeTo(null); // Centrer la fenêtre
+        setLocationRelativeTo(null);
         setLayout(new GridBagLayout());
 
-        // Gestionnaire de positionnement
+        // Gestionn
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.insets = new Insets(10, 10, 10, 10); // Espacement entre les éléments
         gbc.fill = GridBagConstraints.HORIZONTAL;

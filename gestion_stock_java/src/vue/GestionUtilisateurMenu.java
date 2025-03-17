@@ -43,8 +43,8 @@ public class GestionUtilisateurMenu extends JFrame {
         btnQuitter.addActionListener(e -> {
 
             userController.logout();
-            dispose(); // Ferme le menu
-            new LoginView(); // Ouvre la fenêtre de connexion
+            dispose();
+            new LoginView();
         });
 
         add(btnAjouter, gbc);

@@ -75,11 +75,11 @@ public class ModifierFournisseurView extends JFrame {
         panelBas.add(panelModification, BorderLayout.CENTER);
         panelBas.add(panelBoutons, BorderLayout.SOUTH);
 
-        // Ajouter les éléments correctement
+
         add(scrollPane, BorderLayout.CENTER);
         add(panelBas, BorderLayout.SOUTH);
 
-        // Événements des boutons
+
         btnRetour.addActionListener(e -> dispose());
         btnModifierFournisseur.addActionListener(e -> modifierFournisseur());
 

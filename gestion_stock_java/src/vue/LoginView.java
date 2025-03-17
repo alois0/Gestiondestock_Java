@@ -70,7 +70,7 @@ public class LoginView extends JFrame {
         if (utilisateur != null) {
             JOptionPane.showMessageDialog(this, "Connexion réussie ! Bienvenue, " + utilisateur.getNom(), "Succès", JOptionPane.INFORMATION_MESSAGE);
 
-            // ✅ Si l'utilisateur est ADMIN, on affiche un choix
+            // Si l'utilisateur est ADMIN, on affiche un choix
             if (utilisateur.getRole().equalsIgnoreCase("admin")) {
                 int choix = JOptionPane.showOptionDialog(
                         this,
@@ -88,11 +88,11 @@ public class LoginView extends JFrame {
                     new GestionUtilisateurMenu(utilisateur); // Aller à la gestion des utilisateurs
                 }
             } else {
-                // ✅ Si ce n'est pas un admin, direction le menu principal directement
+                // Si ce n'est pas un admin, direction le menu principal directement
                 new Menuview(utilisateur);
             }
 
-            dispose(); // Ferme la fenêtre de login après connexion réussie
+            dispose();
         } else {
             JOptionPane.showMessageDialog(this, "Nom d'utilisateur ou mot de passe incorrect", "Erreur", JOptionPane.ERROR_MESSAGE);
         }

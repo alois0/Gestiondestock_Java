@@ -18,12 +18,12 @@ public class GestionFournisseur extends JFrame {
         setTitle("Gestion des Fournisseurs");
         setSize(500, 400);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLocationRelativeTo(null); // Centrer la fenêtre
+        setLocationRelativeTo(null);
         setLayout(new GridBagLayout());
 
         // Gestionnaire de positionnement
         GridBagConstraints gbc = new GridBagConstraints();
-        gbc.insets = new Insets(10, 10, 10, 10); // Espacement entre les éléments
+        gbc.insets = new Insets(10, 10, 10, 10);
         gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.gridwidth = GridBagConstraints.REMAINDER;
 
@@ -99,10 +99,9 @@ public class GestionFournisseur extends JFrame {
 
 
 
-        gbc.insets = new Insets(20, 10, 10, 10); // Ajout d’un espacement supplémentaire en haut du bouton retour
+        gbc.insets = new Insets(20, 10, 10, 10);
         add(btnRetour, gbc);
 
-        // Action du bouton retour → ferme la fenêtre actuelle
         btnRetour.addActionListener(e -> dispose());
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -111,24 +110,23 @@ public class GestionFournisseur extends JFrame {
 
     private JButton createStyledButton(String text) {
         JButton button = new JButton(text);
-        button.setFont(new Font("Arial", Font.BOLD, 14)); // Texte plus grand
-        button.setBackground(new Color(211, 211, 211)); // Gris clair (Light Gray)
-        button.setForeground(Color.BLACK); // Texte en noir
+        button.setFont(new Font("Arial", Font.BOLD, 14));
+        button.setBackground(new Color(211, 211, 211));
+        button.setForeground(Color.BLACK);
         button.setFocusPainted(false);
-        button.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1)); // Bordure fine en gris
+        button.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
         button.setOpaque(true);
-        button.setBorder(BorderFactory.createEmptyBorder(10, 15, 10, 15)); // Padding interne
+        button.setBorder(BorderFactory.createEmptyBorder(10, 15, 10, 15));
 
-        // Effet au survol (hover)
         button.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                button.setBackground(new Color(169, 169, 169)); // Gris plus foncé (Dark Gray)
+                button.setBackground(new Color(169, 169, 169));
             }
 
             @Override
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                button.setBackground(new Color(211, 211, 211)); // Retour à la couleur normale
+                button.setBackground(new Color(211, 211, 211));
             }
         });
 

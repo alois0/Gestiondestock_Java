@@ -10,7 +10,7 @@ public class Vente {
     private Date dateVente;
     private Produit produit;
 
-    // 🔹 Constructeur COMPLET avec Produit
+
     public Vente(int id, String nomProduit, int produitId, int quantiteVendue, Date dateVente, Produit produit) {
         this.id = id;
         this.nomProduit = nomProduit;
@@ -20,7 +20,7 @@ public class Vente {
         this.produit = produit;
     }
 
-    // 🔹 Constructeur pour une nouvelle vente (sans ID, car auto-généré par la base)
+
     public Vente(String nomProduit, int produitId, int quantiteVendue, Date dateVente) {
         this.nomProduit = nomProduit;
         this.produitId = produitId;
@@ -33,7 +33,7 @@ public class Vente {
         this.nomProduit = nomProduit;
         this.quantiteVendue = quantiteVendue;
         this.dateVente = dateVente;
-        this.produit = null; // Pas besoin d'un objet Produit ici
+        this.produit = null;
     }
 
     public Vente(int id, Produit produit, int quantiteVendue, Date dateVente) {

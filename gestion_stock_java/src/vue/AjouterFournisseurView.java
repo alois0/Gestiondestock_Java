@@ -21,27 +21,25 @@ public class AjouterFournisseurView extends JFrame {
 
         setTitle("Ajouter un Fournisseur");
         setSize(500, 300);
-        setLocationRelativeTo(null); // Centrer la fenêtre
+        setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLayout(new GridBagLayout());
 
         // Gestionnaire de positionnement
         GridBagConstraints gbc = new GridBagConstraints();
-        gbc.insets = new Insets(10, 10, 10, 10); // Espacement uniforme
+        gbc.insets = new Insets(10, 10, 10, 10);
         gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.gridwidth = 1;
 
-        // **Ajout du titre**
         JLabel titleLabel = new JLabel("Ajouter un Fournisseur");
         titleLabel.setFont(new Font("Arial", Font.BOLD, 16));
         titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
         gbc.gridy = 0;
         gbc.gridx = 0;
-        gbc.gridwidth = 2; // Le titre prend toute la largeur
+        gbc.gridwidth = 2;
         add(titleLabel, gbc);
 
-        // **Champs de saisie**
-        gbc.gridwidth = 1; // Retour à une seule colonne
+        gbc.gridwidth = 1;
         addLabel("Nom du Fournisseur:", gbc, 1);
         textFieldNom = new JTextField(15);
         styliserChamp(textFieldNom);
@@ -52,7 +50,6 @@ public class AjouterFournisseurView extends JFrame {
         styliserChamp(textFieldContact);
         addField(textFieldContact, gbc, 2);
 
-        // **Boutons bien alignés en bas**
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 10));
         btnAjouterFournisseur = createStyledButton("Ajouter Fournisseur");
         btnRetour = createStyledButton("Retour");
@@ -63,7 +60,6 @@ public class AjouterFournisseurView extends JFrame {
         gbc.gridwidth = GridBagConstraints.REMAINDER;
         add(buttonPanel, gbc);
 
-        // **Événements**
         btnRetour.addActionListener(e -> dispose());
         btnAjouterFournisseur.addActionListener(e -> ajouterFournisseur());
 
@@ -83,7 +79,6 @@ public class AjouterFournisseurView extends JFrame {
         fournisseurController.ajouterFournisseur(fournisseur);
         JOptionPane.showMessageDialog(null, "Fournisseur ajouté avec succès !");
 
-        // Effacer les champs après l'ajout
         textFieldNom.setText("");
         textFieldContact.setText("");
     }
@@ -104,24 +99,23 @@ public class AjouterFournisseurView extends JFrame {
 
     private JButton createStyledButton(String text) {
         JButton button = new JButton(text);
-        button.setFont(new Font("Arial", Font.BOLD, 14)); // Texte plus grand
-        button.setBackground(new Color(211, 211, 211)); // Gris clair (Light Gray)
-        button.setForeground(Color.BLACK); // Texte en noir
+        button.setFont(new Font("Arial", Font.BOLD, 14));
+        button.setBackground(new Color(211, 211, 211));
+        button.setForeground(Color.BLACK);
         button.setFocusPainted(false);
-        button.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1)); // Bordure fine en gris
+        button.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
         button.setOpaque(true);
-        button.setBorder(BorderFactory.createEmptyBorder(10, 15, 10, 15)); // Padding interne
+        button.setBorder(BorderFactory.createEmptyBorder(10, 15, 10, 15));
 
-        // Effet au survol (hover)
         button.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                button.setBackground(new Color(169, 169, 169)); // Gris plus foncé (Dark Gray)
+                button.setBackground(new Color(169, 169, 169));
             }
 
             @Override
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                button.setBackground(new Color(211, 211, 211)); // Retour à la couleur normale
+                button.setBackground(new Color(211, 211, 211));
             }
         });
 
@@ -129,27 +123,26 @@ public class AjouterFournisseurView extends JFrame {
     }
 
     private void styliserChamp(JTextField champ) {
-        champ.setFont(new Font("Arial", Font.PLAIN, 14)); // Police et taille du texte
-        champ.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1)); // Bordure grise
-        champ.setBackground(new Color(240, 240, 240)); // Fond gris clair
-        champ.setForeground(Color.BLACK); // Texte noir
+        champ.setFont(new Font("Arial", Font.PLAIN, 14));
+        champ.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
+        champ.setBackground(new Color(240, 240, 240));
+        champ.setForeground(Color.BLACK);
         champ.setOpaque(true);
-        champ.setPreferredSize(new Dimension(200, 30)); // Taille du champ
+        champ.setPreferredSize(new Dimension(200, 30));
         champ.setBorder(BorderFactory.createCompoundBorder(
                 BorderFactory.createLineBorder(Color.DARK_GRAY, 1),
-                BorderFactory.createEmptyBorder(5, 10, 5, 10) // Padding interne
+                BorderFactory.createEmptyBorder(5, 10, 5, 10)
         ));
 
-        // Effet au survol (hover)
         champ.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                champ.setBackground(new Color(220, 220, 220)); // Gris plus foncé
+                champ.setBackground(new Color(220, 220, 220));
             }
 
             @Override
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                champ.setBackground(new Color(240, 240, 240)); // Retour à la couleur normale
+                champ.setBackground(new Color(240, 240, 240));
             }
         });
     }

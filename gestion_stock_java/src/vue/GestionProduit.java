@@ -18,7 +18,7 @@ public class GestionProduit extends JFrame {
         setTitle("Gestion des Produits");
         setSize(500, 400);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLocationRelativeTo(null); // Centrer la fenêtre
+        setLocationRelativeTo(null);
         setLayout(new GridBagLayout());
 
         // Gestionnaire de positionnement
@@ -27,7 +27,7 @@ public class GestionProduit extends JFrame {
         gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.gridwidth = GridBagConstraints.REMAINDER;
 
-        // Titre simpliste
+        // Titre
         JLabel titleLabel = new JLabel("Gestion des Produits");
         titleLabel.setFont(new Font("Arial", Font.BOLD, 16));
         titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -46,7 +46,6 @@ public class GestionProduit extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 System.out.println("📢 Ouverture de l'interface d'ajout de produit...");
 
-                // 📌 Création de ProduitView SEULEMENT quand on clique
                 AjouterProduitView vue = new AjouterProduitView(utilisateur);
                 ProduitController controller = new ProduitController();
 
@@ -75,12 +74,12 @@ public class GestionProduit extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println("📢 Ouverture de l'interface de consultation des produits...");
-                new ConsulterProduitView(); // Ouvre la page de consultation
+                new ConsulterProduitView();
             }
         });
 
 
-        // ✅ Ajout de l'action pour générer le rapport stock
+        // Ajout de l'action pour générer le rapport stock
         rapportStockButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -100,10 +99,9 @@ public class GestionProduit extends JFrame {
         add(consulterProduitButton, gbc);
         add(rapportStockButton, gbc);
 
-        gbc.insets = new Insets(20, 10, 10, 10); // Ajout d’un espacement supplémentaire en haut du bouton retour
+        gbc.insets = new Insets(20, 10, 10, 10);
         add(btnRetour, gbc);
 
-        // Action du bouton retour → ferme la fenêtre actuelle
         btnRetour.addActionListener(e -> dispose());
 
 
@@ -113,24 +111,23 @@ public class GestionProduit extends JFrame {
 
     private JButton createStyledButton(String text) {
         JButton button = new JButton(text);
-        button.setFont(new Font("Arial", Font.BOLD, 14)); // Texte plus grand
-        button.setBackground(new Color(211, 211, 211)); // Gris clair (Light Gray)
-        button.setForeground(Color.BLACK); // Texte en noir
+        button.setFont(new Font("Arial", Font.BOLD, 14));
+        button.setBackground(new Color(211, 211, 211));
+        button.setForeground(Color.BLACK);
         button.setFocusPainted(false);
-        button.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1)); // Bordure fine en gris
+        button.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
         button.setOpaque(true);
-        button.setBorder(BorderFactory.createEmptyBorder(10, 15, 10, 15)); // Padding interne
+        button.setBorder(BorderFactory.createEmptyBorder(10, 15, 10, 15));
 
-        // Effet au survol (hover)
         button.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                button.setBackground(new Color(169, 169, 169)); // Gris plus foncé (Dark Gray)
+                button.setBackground(new Color(169, 169, 169));
             }
 
             @Override
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                button.setBackground(new Color(211, 211, 211)); // Retour à la couleur normale
+                button.setBackground(new Color(211, 211, 211));
             }
         });
 

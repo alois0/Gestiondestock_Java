@@ -9,10 +9,8 @@ public class Fournisseur {
     private String contact;
     private List<Produit> produits;
 
-    // Liste statique de tous les fournisseurs
     private static List<Fournisseur> fournisseurs = new ArrayList<>();
 
-    // Constructeur par défaut
     public Fournisseur() {
         this.produits = new ArrayList<>();
     }

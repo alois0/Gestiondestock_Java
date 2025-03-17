@@ -70,24 +70,23 @@ public class RapportStockView extends JFrame {
 
     private JButton createStyledButton(String text) {
         JButton button = new JButton(text);
-        button.setFont(new Font("Arial", Font.BOLD, 14)); // Texte plus grand
-        button.setBackground(new Color(211, 211, 211)); // Gris clair (Light Gray)
-        button.setForeground(Color.BLACK); // Texte en noir
+        button.setFont(new Font("Arial", Font.BOLD, 14));
+        button.setBackground(new Color(211, 211, 211));
+        button.setForeground(Color.BLACK);
         button.setFocusPainted(false);
-        button.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1)); // Bordure fine en gris
+        button.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
         button.setOpaque(true);
-        button.setBorder(BorderFactory.createEmptyBorder(10, 15, 10, 15)); // Padding interne
+        button.setBorder(BorderFactory.createEmptyBorder(10, 15, 10, 15));
 
-        // Effet au survol (hover)
         button.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                button.setBackground(new Color(169, 169, 169)); // Gris plus foncé (Dark Gray)
+                button.setBackground(new Color(169, 169, 169));
             }
 
             @Override
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                button.setBackground(new Color(211, 211, 211)); // Retour à la couleur normale
+                button.setBackground(new Color(211, 211, 211));
             }
         });
 
@@ -97,13 +96,12 @@ public class RapportStockView extends JFrame {
     private void styliserTable(JTable table) {
         JTableHeader header = table.getTableHeader();
         header.setFont(new Font("Arial", Font.BOLD, 14));
-        header.setBackground(new Color(180, 180, 180)); // Gris foncé pour l'en-tête
+        header.setBackground(new Color(180, 180, 180));
         header.setForeground(Color.BLACK);
 
         table.setFont(new Font("Arial", Font.PLAIN, 13));
         table.setRowHeight(25);
 
-        // ✅ Alignement centré des cellules
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
         centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
 
@@ -111,14 +109,13 @@ public class RapportStockView extends JFrame {
             table.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
         }
 
-        // ✅ Couleur alternée des lignes
         table.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
             @Override
             public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected,
                                                            boolean hasFocus, int row, int column) {
                 Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
                 if (row % 2 == 0) {
-                    c.setBackground(new Color(230, 230, 230)); // Gris clair pour les lignes paires
+                    c.setBackground(new Color(230, 230, 230));
                 } else {
                     c.setBackground(Color.WHITE);
                 }

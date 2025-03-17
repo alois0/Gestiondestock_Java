@@ -23,7 +23,7 @@ public class Menuview extends JFrame {
         setTitle("Menu Principal");
         setSize(400, 350);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLocationRelativeTo(null); // Centrer la fenêtre
+        setLocationRelativeTo(null);
         setLayout(new GridBagLayout());
 
         // Gestionnaire de positionnement
@@ -32,13 +32,12 @@ public class Menuview extends JFrame {
         gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.gridwidth = GridBagConstraints.REMAINDER;
 
-        // Titre simpliste
+        // Titre
         JLabel titleLabel = new JLabel("Menu Principal");
         titleLabel.setFont(new Font("Arial", Font.BOLD, 16));
         titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
         add(titleLabel, gbc);
 
-        // Boutons standards sans styles personnalisés
         JButton gestionProduitButton = createStyledButton("Gestion Produit");
         JButton gestionVenteButton = createStyledButton("Gestion Ventes");
         JButton gestionFournisseurButton = createStyledButton("Gestion Fournisseur");
