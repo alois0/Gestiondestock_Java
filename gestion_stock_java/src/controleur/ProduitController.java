@@ -19,7 +19,8 @@ public class ProduitController {
     }
 
     public List<Produit> getProduits() {
-        String sql = "SELECT * FROM produit";
+        String sql = "SELECT p.id, p.nom, p.prix, p.quantite, f.nom AS fournisseur " +
+                "FROM produit p LEFT JOIN fournisseur f ON p.fournisseur_id = f.id";
         List<Produit> produits = new ArrayList<>();
         try (PreparedStatement statement = connection.prepareStatement(sql);
              ResultSet resultSet = statement.executeQuery()) {
@@ -28,7 +29,8 @@ public class ProduitController {
                 String nom = resultSet.getString("nom");
                 double prix = resultSet.getDouble("prix");
                 int quantite = resultSet.getInt("quantite");
-                produits.add(new Produit(id, nom, prix, quantite));
+                String fournisseur = resultSet.getString("fournisseur");
+                produits.add(new Produit(id, nom, prix, quantite, fournisseur));
             }
         } catch (SQLException e) {
             e.printStackTrace();

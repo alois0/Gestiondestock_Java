@@ -70,6 +70,14 @@ public class Produit {
         this.fournisseur = fournisseur;
     }
 
+    public Produit(int id, String nom, double prix, int quantite, String fournisseur) {
+        this.id = id;
+        this.nom = nom;
+        this.prix = prix;
+        this.quantite = quantite;
+        this.fournisseur = fournisseur;
+    }
+
     public Produit(int id, String nom, double prix, int quantite, int fournisseurId) {
         this.id = id;
         this.nom = nom;
@@ -77,6 +85,8 @@ public class Produit {
         this.quantite = quantite;
         this.fournisseurId = fournisseurId;
     }
+
+
 
 
 
@@ -130,4 +140,6 @@ public class Produit {
     public int getFournisseurId() {
         return fournisseurId;
     }
+
+
 }

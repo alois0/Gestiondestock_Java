@@ -40,7 +40,7 @@ public class ConsulterProduitView extends JFrame {
         });
 
         // Table pour afficher les produits
-        String[] columnNames = {"ID", "Nom", "Prix", "Quantité"};
+        String[] columnNames = {"ID", "Nom", "Prix", "Quantité","Fournisseur"};
         tableModel = new DefaultTableModel(columnNames, 0);
         tableProduits = new JTable(tableModel);
         styliserTable(tableProduits);
@@ -80,7 +80,8 @@ public class ConsulterProduitView extends JFrame {
                     produit.getId(),
                     produit.getNom(),
                     produit.getPrix(),
-                    produit.getQuantite()
+                    produit.getQuantite(),
+                    produit.getFournisseur(),
             });
         }
     }

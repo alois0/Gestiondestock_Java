@@ -37,7 +37,6 @@ public class GestionFournisseur extends JFrame {
         JButton modifierFournisseurButton = createStyledButton("Modifier Fournisseur");
         JButton supprimerFournisseurButton = createStyledButton("Supprimer Fournisseur");
         JButton ConsulterFournisseurButton = createStyledButton("Consulter Fournisseur");
-        JButton AssocierProduitFournisseurButton = createStyledButton( ("Associer Produit"));
         JButton btnRetour = createStyledButton("Retour");
 
         ajouterFournisseurButton.addActionListener(new ActionListener() {
@@ -86,17 +85,7 @@ public class GestionFournisseur extends JFrame {
         });
 
 
-        AssocierProduitFournisseurButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
 
-                System.out.println("📢 Ouverture de l'interface de consultation de fournisseur...");
-
-               AssocierProduitFournisseurView vue = new AssocierProduitFournisseurView();
-
-
-            }
-        });
 
 // Désactivation du bouton suppression si l'utilisateur N'EST PAS un manager
         if (!utilisateur.getRole().equals("admin")) {
@@ -107,7 +96,7 @@ public class GestionFournisseur extends JFrame {
         add(modifierFournisseurButton, gbc);
         add(supprimerFournisseurButton, gbc);
         add(ConsulterFournisseurButton, gbc);
-        add(AssocierProduitFournisseurButton, gbc);
+
 
 
         gbc.insets = new Insets(20, 10, 10, 10); // Ajout d’un espacement supplémentaire en haut du bouton retour
