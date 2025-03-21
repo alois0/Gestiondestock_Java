@@ -126,7 +126,7 @@ public class SupprimerUtilisateurView extends JFrame {
     private JButton createStyledButton(String text) {
         JButton button = new JButton(text);
         button.setFont(new Font("Arial", Font.BOLD, 14));
-        button.setBackground(new Color(211, 211, 211)); // Gris clair
+        button.setBackground(new Color(211, 211, 211));
         button.setForeground(Color.BLACK);
         button.setFocusPainted(false);
         button.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));

@@ -19,30 +19,6 @@ public class UserController {
         this.connection = Connexion.getConnection();
     }
 
-
-    public User verifierUtilisateur(String nom, String motDePasse) {
-        String sql = "SELECT * FROM users WHERE nom = ? AND mot_de_passe = ?"; // ⚠️ Hachage à prévoir
-
-        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
-            stmt.setString(1, nom);
-            stmt.setString(2, motDePasse);
-
-            ResultSet rs = stmt.executeQuery();
-            if (rs.next()) {
-                utilisateurConnecte = new User(
-                        rs.getInt("id"),
-                        rs.getString("nom"),
-                        rs.getString("mot_de_passe"),
-                        rs.getString("role")
-                );
-                return utilisateurConnecte;
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-
     public List<User> getUtilisateurs() {
         List<User> utilisateurs = new ArrayList<>();
         String sql = "SELECT * FROM users";
@@ -53,7 +29,7 @@ public class UserController {
             while (resultSet.next()) {
                 int id = resultSet.getInt("id");
                 String nom = resultSet.getString("nom");
-                String motDePasse = resultSet.getString("mot_de_passe"); // ⚠️ À ne pas afficher en clair
+                String motDePasse = resultSet.getString("mot_de_passe");
                 String role = resultSet.getString("role");
 
                 utilisateurs.add(new User(id, nom, motDePasse, role));
@@ -111,7 +87,7 @@ public class UserController {
         }
     }
 
-    // Rechercher un utilisateur
+
     public List<User> rechercherUtilisateurs(String recherche) {
         List<User> utilisateurs = new ArrayList<>();
         String sql = "SELECT * FROM users WHERE nom LIKE ? OR role LIKE ?";
@@ -124,7 +100,7 @@ public class UserController {
             while (resultSet.next()) {
                 int id = resultSet.getInt("id");
                 String nom = resultSet.getString("nom");
-                String motDePasse = resultSet.getString("mot_de_passe"); // ⚠️ À ne pas afficher en clair
+                String motDePasse = resultSet.getString("mot_de_passe");
                 String role = resultSet.getString("role");
 
                 utilisateurs.add(new User(id, nom, motDePasse, role));

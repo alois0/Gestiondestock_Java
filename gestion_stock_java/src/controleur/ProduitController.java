@@ -51,10 +51,10 @@ public class ProduitController {
             stmt.setInt(4, produit.getFournisseurId());
 
             int rowsAffected = stmt.executeUpdate();
-            return rowsAffected > 0;  // ✅ Retourne `true` si l'ajout a réussi
+            return rowsAffected > 0;
         } catch (SQLException e) {
             e.printStackTrace();
-            return false;  // ✅ Retourne `false` en cas d'erreur
+            return false;
         }
     }
 
@@ -142,7 +142,7 @@ public class ProduitController {
             statement.setInt(2, seuil);
             ResultSet resultSet = statement.executeQuery();
 
-            if (resultSet.next()) { // ✅ On vérifie seulement ce produit
+            if (resultSet.next()) {
                 String nomProduit = resultSet.getString("nom");
                 int quantite = resultSet.getInt("quantite");
 
@@ -150,7 +150,6 @@ public class ProduitController {
                         + "⚠️ <b>" + nomProduit + "</b> : " + quantite + " unités restantes<br>"
                         + "</html>";
 
-                // 🔥 Afficher immédiatement l'alerte
                 SwingUtilities.invokeLater(() ->
                         JOptionPane.showMessageDialog(null, message, "Alerte Stock Faible", JOptionPane.WARNING_MESSAGE)
                 );
@@ -168,7 +167,7 @@ public class ProduitController {
     public List<Produit> getEtatStock() {
         List<Produit> produits = new ArrayList<>();
         String sql = "SELECT p.id, p.nom, p.quantite, f.nom AS fournisseur " +
-                "FROM produit p LEFT JOIN fournisseur f ON p.fournisseur_id = f.id"; // ✅ Correction ici
+                "FROM produit p LEFT JOIN fournisseur f ON p.fournisseur_id = f.id";
 
         try (PreparedStatement statement = connection.prepareStatement(sql);
              ResultSet resultSet = statement.executeQuery()) {
@@ -176,9 +175,9 @@ public class ProduitController {
                 int id = resultSet.getInt("id");
                 String nom = resultSet.getString("nom");
                 int quantite = resultSet.getInt("quantite");
-                String fournisseur = resultSet.getString("fournisseur"); // ✅ Récupération correcte du fournisseur
+                String fournisseur = resultSet.getString("fournisseur");
 
-                produits.add(new Produit(id, nom, quantite, fournisseur)); // ✅ Utilisation correcte du constructeur
+                produits.add(new Produit(id, nom, quantite, fournisseur));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -189,10 +188,10 @@ public class ProduitController {
     }
 
     public void exporterCSVStock(String[] headers) {
-        List<Produit> produits = getEtatStock(); // 📌 Récupère les produits du stock
+        List<Produit> produits = getEtatStock(); // Récupère les produits du stock
         List<String[]> data = new ArrayList<>();
 
-        // 🔹 Transformation des objets Produit en lignes de texte
+        // Transformation des objets Produit en lignes de texte
         for (Produit produit : produits) {
             data.add(new String[]{
                     String.valueOf(produit.getId()),
@@ -202,7 +201,7 @@ public class ProduitController {
             });
         }
 
-        // 🔹 Appelle la fonction pour exporter en CSV
+        // Appelle la fonction pour exporter en CSV
         exporterCSV(data, headers, "rapport_stock.csv");
     }
 
@@ -220,7 +219,7 @@ public class ProduitController {
             }
 
             try (FileWriter writer = new FileWriter(filePath)) {
-                writer.append(String.join(",", headers)).append("\n"); // 📌 Ajoute l'en-tête CSV
+                writer.append(String.join(",", headers)).append("\n");
 
                 for (String[] row : data) {
                     writer.append(String.join(",", row)).append("\n");

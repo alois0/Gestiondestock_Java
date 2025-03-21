@@ -4,7 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5249a0f1-82ec-4d54-9dd0-cfafdee1459c" name="Changes" comment="" />
+    <list default="true" id="5249a0f1-82ec-4d54-9dd0-cfafdee1459c" name="Changes" comment="test">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gestion_stock_java/out/production/javastock/app/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/gestion_stock_java/out/production/javastock/app/App.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gestion_stock_java/src/controleur/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/gestion_stock_java/src/controleur/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gestion_stock_java/src/controleur/ProduitController.java" beforeDir="false" afterPath="$PROJECT_DIR$/gestion_stock_java/src/controleur/ProduitController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gestion_stock_java/src/controleur/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/gestion_stock_java/src/controleur/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gestion_stock_java/src/controleur/VenteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/gestion_stock_java/src/controleur/VenteController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gestion_stock_java/src/modele/Produit.java" beforeDir="false" afterPath="$PROJECT_DIR$/gestion_stock_java/src/modele/Produit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gestion_stock_java/src/test/TestUnitaireProduitVente.java" beforeDir="false" afterPath="$PROJECT_DIR$/gestion_stock_java/src/test/TestUnitaireProduitVente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gestion_stock_java/src/vue/AjouterVenteView.java" beforeDir="false" afterPath="$PROJECT_DIR$/gestion_stock_java/src/vue/AjouterVenteView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gestion_stock_java/src/vue/GestionVente.java" beforeDir="false" afterPath="$PROJECT_DIR$/gestion_stock_java/src/vue/GestionVente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gestion_stock_java/src/vue/LoginView.java" beforeDir="false" afterPath="$PROJECT_DIR$/gestion_stock_java/src/vue/LoginView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gestion_stock_java/src/vue/Menuview.java" beforeDir="false" afterPath="$PROJECT_DIR$/gestion_stock_java/src/vue/Menuview.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gestion_stock_java/src/vue/ModifierFournisseurView.java" beforeDir="false" afterPath="$PROJECT_DIR$/gestion_stock_java/src/vue/ModifierFournisseurView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gestion_stock_java/src/vue/ModifierProduitView.java" beforeDir="false" afterPath="$PROJECT_DIR$/gestion_stock_java/src/vue/ModifierProduitView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gestion_stock_java/src/vue/SupprimerFournisseurView.java" beforeDir="false" afterPath="$PROJECT_DIR$/gestion_stock_java/src/vue/SupprimerFournisseurView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gestion_stock_java/src/vue/SupprimerUtilisateurView.java" beforeDir="false" afterPath="$PROJECT_DIR$/gestion_stock_java/src/vue/SupprimerUtilisateurView.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -31,6 +48,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
     "jdk.selected.JAVA_MODULE": "21",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/nicob/Desktop/testunit/junit-platform-console-standalone-1.12.0.jar",

@@ -166,18 +166,16 @@ public class ModifierProduitView extends JFrame {
         chargerProduits();
     }
 
-    // Méthode pour styliser les boutons
     private JButton createStyledButton(String text) {
         JButton button = new JButton(text);
         button.setFont(new Font("Arial", Font.BOLD, 14));
-        button.setBackground(new Color(211, 211, 211)); // Gris clair
+        button.setBackground(new Color(211, 211, 211));
         button.setForeground(Color.BLACK);
         button.setFocusPainted(false);
         button.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
         button.setOpaque(true);
         button.setBorder(BorderFactory.createEmptyBorder(10, 15, 10, 15));
 
-        // Effet hover (sombre au survol)
         button.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -193,7 +191,6 @@ public class ModifierProduitView extends JFrame {
         return button;
     }
 
-    // Méthode pour styliser la JTable
     private void styliserTable(JTable table) {
         JTableHeader header = table.getTableHeader();
         header.setFont(new Font("Arial", Font.BOLD, 14));
@@ -203,7 +200,6 @@ public class ModifierProduitView extends JFrame {
         table.setFont(new Font("Arial", Font.PLAIN, 13));
         table.setRowHeight(25);
 
-        // Alignement centré des cellules
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
         centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
 
@@ -211,7 +207,6 @@ public class ModifierProduitView extends JFrame {
             table.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
         }
 
-        // Couleur alternée des lignes
         table.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
             @Override
             public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected,

@@ -115,7 +115,7 @@ public class AjouterVenteView extends JFrame {
         int quantiteVendue;
 
         try {
-            quantiteVendue = Integer.parseInt(textFieldQuantiteVendue.getText().trim()); // ✅ Utilisation correcte
+            quantiteVendue = Integer.parseInt(textFieldQuantiteVendue.getText().trim());
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Veuillez entrer une quantité valide !");
             return;

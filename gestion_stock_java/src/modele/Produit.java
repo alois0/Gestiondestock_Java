@@ -20,7 +20,7 @@ public class Produit {
 
 
     public Produit() {
-        this.ventes = new ArrayList<>(); // ✅ Initialisation ici
+        this.ventes = new ArrayList<>();
     }
 
 
@@ -40,7 +40,7 @@ public class Produit {
 
     public void ajouterVente(Vente vente) {
         if (ventes == null) {
-            ventes = new ArrayList<>(); // ✅ Empêche NullPointerException
+            ventes = new ArrayList<>(); // Empêche NullPointerException
         }
         if (vente != null) {
             this.ventes.add(vente);
@@ -60,7 +60,7 @@ public class Produit {
         this.nom = nom;
         this.prix = prix;
         this.quantite = quantite;
-        this.ventes = (ventes != null) ? ventes : new ArrayList<>(); // ✅ Évite NullPointerException
+        this.ventes = (ventes != null) ? ventes : new ArrayList<>(); // Évite NullPointerException
     }
 
     public Produit(int id, String nom, int quantite, String fournisseur) {

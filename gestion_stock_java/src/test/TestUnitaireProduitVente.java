@@ -17,11 +17,8 @@ class TestUnitaireProduitVente {
 
     @BeforeEach
     public void setUp() {
-        // Créer un produit
         produit = new Produit(1, "Produit Test", 100.0, 20);
 
-
-        // Créer une vente associée à ce produit
         vente = new Vente(1, produit, 5, new Date());
 
         // Ajouter la vente au produit

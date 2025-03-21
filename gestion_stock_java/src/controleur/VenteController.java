@@ -146,7 +146,7 @@ public class VenteController {
     }
 
 
-    // Récupérer l'historique des ventes
+
 
 
     // Supprimer une vente
