@@ -18,7 +18,6 @@ public class Produit {
 
 
 
-
     public Produit() {
         this.ventes = new ArrayList<>();
     }

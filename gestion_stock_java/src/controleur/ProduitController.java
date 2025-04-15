@@ -2,6 +2,7 @@ package controleur;
 
 import modele.Connexion;
 import modele.Produit;
+import modele.User;
 
 import java.io.File;
 import java.io.FileWriter;

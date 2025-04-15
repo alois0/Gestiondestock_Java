@@ -136,55 +136,7 @@ public class FournisseurController {
         return fournisseurs;
     }
 
-    public void associerProduitsAFournisseur(int fournisseurId, List<Integer> produitIds) {
 
-
-        String sql = "UPDATE produit SET fournisseur_id = ? WHERE id = ?";
-        boolean produitAjoute = false; // Vérifier si au moins un produit a été associé
-
-        try (PreparedStatement statement = connection.prepareStatement(sql)) {
-            for (int produitId : produitIds) {
-                if (estProduitDejaAssocie(fournisseurId, produitId)) {
-                    System.out.println("⛔ Le produit ID " + produitId + " est déjà associé à ce fournisseur !");
-                    JOptionPane.showMessageDialog(null, "Le produit ID " + produitId + " est déjà associé à ce fournisseur !");
-                    continue; // On passe au produit suivant sans l'ajouter à nouveau
-                }
-
-                statement.setInt(1, fournisseurId);
-                statement.setInt(2, produitId);
-                statement.executeUpdate();
-                produitAjoute = true; // Un produit a bien été ajouté
-            }
-
-            // ✅ On affiche un message UNIQUEMENT si au moins un produit a été ajouté
-            if (produitAjoute) {
-                JOptionPane.showMessageDialog(null, "✅ Produits associés avec succès !");
-            }
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "❌ Erreur lors de l'association des produits !");
-        }
-    }
-
-
-
-    public void desassocierProduitFournisseur(int produitId) {
-        String sql = "UPDATE produit SET fournisseur_id = NULL WHERE id = ?";
-
-        try (PreparedStatement statement = connection.prepareStatement(sql)) {
-            statement.setInt(1, produitId);
-            int rowsUpdated = statement.executeUpdate();
-            if (rowsUpdated > 0) {
-                System.out.println("Produit ID " + produitId + " désassocié de son fournisseur.");
-            } else {
-                System.out.println("Aucune modification effectuée, vérifiez l'ID du produit.");
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-            System.err.println("Erreur lors de la désassociation du produit.");
-        }
-    }
 
     public List<Produit> getProduits() {
         String sql = "SELECT * FROM produit";
@@ -205,41 +157,5 @@ public class FournisseurController {
         return produits;
     }
 
-    public List<Produit> getProduitsParFournisseur(int fournisseurId) {
-        List<Produit> produits = new ArrayList<>();
-        String sql = "SELECT id, nom, prix, quantite FROM produit WHERE fournisseur_id = ?";
-
-        try (PreparedStatement statement = connection.prepareStatement(sql)) {
-            statement.setInt(1, fournisseurId);
-            ResultSet resultSet = statement.executeQuery();
-
-            while (resultSet.next()) {
-                int id = resultSet.getInt("id");
-                String nom = resultSet.getString("nom");
-                double prix = resultSet.getDouble("prix");
-                int quantite = resultSet.getInt("quantite");
-                produits.add(new Produit(id, nom, prix, quantite));
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-            System.err.println("Erreur lors de la récupération des produits du fournisseur.");
-        }
-        return produits;
-    }
-
-    public boolean estProduitDejaAssocie(int fournisseurId, int produitId) {
-        String sql = "SELECT COUNT(*) FROM produit WHERE id = ? AND fournisseur_id = ?";
-        try (PreparedStatement statement = connection.prepareStatement(sql)) {
-            statement.setInt(1, produitId);
-            statement.setInt(2, fournisseurId);
-            ResultSet resultSet = statement.executeQuery();
-            if (resultSet.next()) {
-                return resultSet.getInt(1) > 0; // Si le produit est déjà associé, on renvoie true
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return false;
-    }
 
 }

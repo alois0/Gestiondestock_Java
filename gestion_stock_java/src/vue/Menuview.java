@@ -41,6 +41,8 @@ public class Menuview extends JFrame {
         JButton gestionProduitButton = createStyledButton("Gestion Produit");
         JButton gestionVenteButton = createStyledButton("Gestion Ventes");
         JButton gestionFournisseurButton = createStyledButton("Gestion Fournisseur");
+
+
         JButton btnQuitter = createStyledButton("Quitter");
 
 
@@ -66,6 +68,9 @@ public class Menuview extends JFrame {
         });
 
 
+
+
+
         btnQuitter.addActionListener(e -> {
 
             userController.logout();
@@ -82,6 +87,8 @@ public class Menuview extends JFrame {
         add(gestionProduitButton, gbc);
         add(gestionVenteButton, gbc);
         add(gestionFournisseurButton, gbc);
+
+
         add(btnQuitter, gbc);
 
 

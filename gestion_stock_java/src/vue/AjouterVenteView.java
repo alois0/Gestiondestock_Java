@@ -2,6 +2,7 @@ package vue;
 
 import controleur.VenteController;
 import modele.Produit;
+import modele.User;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -21,6 +22,9 @@ public class AjouterVenteView extends JFrame {
     private JButton btnAjouterVente;
     private JButton btnRetour;
     private VenteController venteController;
+
+    private User utilisateur;
+
 
     public AjouterVenteView() {
         this.venteController = new VenteController();
@@ -127,6 +131,7 @@ public class AjouterVenteView extends JFrame {
         }
 
         venteController.enregistrerVente(produitNom, produitId, quantiteVendue, new Date());
+
         dispose();
     }
 
