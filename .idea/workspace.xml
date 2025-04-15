@@ -4,52 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5249a0f1-82ec-4d54-9dd0-cfafdee1459c" name="Changes" comment="hachage + correction">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gestion_stock_java/out/production/javastock/controleur/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/gestion_stock_java/out/production/javastock/controleur/LoginController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gestion_stock_java/out/production/javastock/controleur/ProduitController.class" beforeDir="false" afterPath="$PROJECT_DIR$/gestion_stock_java/out/production/javastock/controleur/ProduitController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gestion_stock_java/out/production/javastock/controleur/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/gestion_stock_java/out/production/javastock/controleur/UserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gestion_stock_java/out/production/javastock/modele/Produit.class" beforeDir="false" afterPath="$PROJECT_DIR$/gestion_stock_java/out/production/javastock/modele/Produit.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gestion_stock_java/out/production/javastock/test/TestUnitaireProduitVente.class" beforeDir="false" afterPath="$PROJECT_DIR$/gestion_stock_java/out/production/javastock/test/TestUnitaireProduitVente.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gestion_stock_java/out/production/javastock/vue/AjouterVenteView$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/gestion_stock_java/out/production/javastock/vue/AjouterVenteView$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gestion_stock_java/out/production/javastock/vue/AjouterVenteView$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/gestion_stock_java/out/production/javastock/vue/AjouterVenteView$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gestion_stock_java/out/production/javastock/vue/AjouterVenteView$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/gestion_stock_java/out/production/javastock/vue/AjouterVenteView$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gestion_stock_java/out/production/javastock/vue/AjouterVenteView$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/gestion_stock_java/out/production/javastock/vue/AjouterVenteView$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gestion_stock_java/out/production/javastock/vue/AjouterVenteView.class" beforeDir="false" afterPath="$PROJECT_DIR$/gestion_stock_java/out/production/javastock/vue/AjouterVenteView.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gestion_stock_java/out/production/javastock/vue/GestionProduit$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/gestion_stock_java/out/production/javastock/vue/GestionProduit$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gestion_stock_java/out/production/javastock/vue/GestionProduit$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/gestion_stock_java/out/production/javastock/vue/GestionProduit$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gestion_stock_java/out/production/javastock/vue/GestionProduit$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/gestion_stock_java/out/production/javastock/vue/GestionProduit$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gestion_stock_java/out/production/javastock/vue/GestionProduit$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/gestion_stock_java/out/production/javastock/vue/GestionProduit$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gestion_stock_java/out/production/javastock/vue/GestionProduit$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/gestion_stock_java/out/production/javastock/vue/GestionProduit$5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gestion_stock_java/out/production/javastock/vue/GestionProduit$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/gestion_stock_java/out/production/javastock/vue/GestionProduit$6.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gestion_stock_java/out/production/javastock/vue/GestionProduit.class" beforeDir="false" afterPath="$PROJECT_DIR$/gestion_stock_java/out/production/javastock/vue/GestionProduit.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gestion_stock_java/out/production/javastock/vue/GestionVente$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/gestion_stock_java/out/production/javastock/vue/GestionVente$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gestion_stock_java/out/production/javastock/vue/GestionVente.class" beforeDir="false" afterPath="$PROJECT_DIR$/gestion_stock_java/out/production/javastock/vue/GestionVente.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gestion_stock_java/out/production/javastock/vue/LoginView$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/gestion_stock_java/out/production/javastock/vue/LoginView$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gestion_stock_java/out/production/javastock/vue/LoginView$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/gestion_stock_java/out/production/javastock/vue/LoginView$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gestion_stock_java/out/production/javastock/vue/LoginView.class" beforeDir="false" afterPath="$PROJECT_DIR$/gestion_stock_java/out/production/javastock/vue/LoginView.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gestion_stock_java/out/production/javastock/vue/Menuview$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/gestion_stock_java/out/production/javastock/vue/Menuview$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gestion_stock_java/out/production/javastock/vue/Menuview$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/gestion_stock_java/out/production/javastock/vue/Menuview$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gestion_stock_java/out/production/javastock/vue/Menuview$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/gestion_stock_java/out/production/javastock/vue/Menuview$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gestion_stock_java/out/production/javastock/vue/Menuview$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/gestion_stock_java/out/production/javastock/vue/Menuview$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gestion_stock_java/out/production/javastock/vue/Menuview.class" beforeDir="false" afterPath="$PROJECT_DIR$/gestion_stock_java/out/production/javastock/vue/Menuview.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gestion_stock_java/out/production/javastock/vue/ModifierFournisseurView$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/gestion_stock_java/out/production/javastock/vue/ModifierFournisseurView$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gestion_stock_java/out/production/javastock/vue/ModifierFournisseurView$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/gestion_stock_java/out/production/javastock/vue/ModifierFournisseurView$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gestion_stock_java/out/production/javastock/vue/ModifierFournisseurView$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/gestion_stock_java/out/production/javastock/vue/ModifierFournisseurView$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gestion_stock_java/out/production/javastock/vue/ModifierFournisseurView.class" beforeDir="false" afterPath="$PROJECT_DIR$/gestion_stock_java/out/production/javastock/vue/ModifierFournisseurView.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gestion_stock_java/out/production/javastock/vue/ModifierProduitView$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/gestion_stock_java/out/production/javastock/vue/ModifierProduitView$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gestion_stock_java/out/production/javastock/vue/ModifierProduitView$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/gestion_stock_java/out/production/javastock/vue/ModifierProduitView$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gestion_stock_java/out/production/javastock/vue/ModifierProduitView$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/gestion_stock_java/out/production/javastock/vue/ModifierProduitView$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gestion_stock_java/out/production/javastock/vue/ModifierProduitView.class" beforeDir="false" afterPath="$PROJECT_DIR$/gestion_stock_java/out/production/javastock/vue/ModifierProduitView.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gestion_stock_java/out/production/javastock/vue/SupprimerFournisseurView$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/gestion_stock_java/out/production/javastock/vue/SupprimerFournisseurView$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gestion_stock_java/out/production/javastock/vue/SupprimerFournisseurView.class" beforeDir="false" afterPath="$PROJECT_DIR$/gestion_stock_java/out/production/javastock/vue/SupprimerFournisseurView.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gestion_stock_java/src/controleur/FournisseurController.java" beforeDir="false" afterPath="$PROJECT_DIR$/gestion_stock_java/src/controleur/FournisseurController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gestion_stock_java/src/controleur/ProduitController.java" beforeDir="false" afterPath="$PROJECT_DIR$/gestion_stock_java/src/controleur/ProduitController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gestion_stock_java/src/modele/Produit.java" beforeDir="false" afterPath="$PROJECT_DIR$/gestion_stock_java/src/modele/Produit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gestion_stock_java/src/vue/AjouterVenteView.java" beforeDir="false" afterPath="$PROJECT_DIR$/gestion_stock_java/src/vue/AjouterVenteView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gestion_stock_java/src/vue/GestionProduit.java" beforeDir="false" afterPath="$PROJECT_DIR$/gestion_stock_java/src/vue/GestionProduit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gestion_stock_java/src/vue/Menuview.java" beforeDir="false" afterPath="$PROJECT_DIR$/gestion_stock_java/src/vue/Menuview.java" afterDir="false" />
-    </list>
+    <list default="true" id="5249a0f1-82ec-4d54-9dd0-cfafdee1459c" name="Changes" comment=" correction" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -121,7 +76,15 @@
       <option name="project" value="LOCAL" />
       <updated>1742544156651</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary=" correction">
+      <option name="closed" value="true" />
+      <created>1744728889566</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1744728889566</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -129,6 +92,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="hachage + correction" />
-    <option name="LAST_COMMIT_MESSAGE" value="hachage + correction" />
+    <MESSAGE value=" correction" />
+    <option name="LAST_COMMIT_MESSAGE" value=" correction" />
   </component>
 </project>
