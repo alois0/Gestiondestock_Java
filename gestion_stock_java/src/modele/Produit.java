@@ -122,7 +122,7 @@ public class Produit {
         this.quantite = quantite;
     }
 
-    public String getFournisseur() { // ✅ Ajout du getter
+    public String getFournisseur() { //  Ajout du getter
         return fournisseur;
     }
 

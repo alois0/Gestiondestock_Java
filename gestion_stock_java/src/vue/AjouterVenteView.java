@@ -32,7 +32,7 @@ public class AjouterVenteView extends JFrame {
         setLayout(new BorderLayout());
         setSize(600, 500);
 
-        // ✅ Barre de recherche
+        // Barre de recherche
         JPanel panelRecherche = new JPanel(new FlowLayout(FlowLayout.LEFT));
         panelRecherche.add(new JLabel("🔎 Rechercher:"));
         textFieldRecherche = new JTextField(20);

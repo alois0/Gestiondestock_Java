@@ -53,7 +53,7 @@ public class Vente {
     }
 
 
-    // ✅ Getters et Setters
+    //  Getters et Setters
     public int getId() {
         return id;
     }

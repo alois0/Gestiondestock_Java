@@ -93,7 +93,7 @@ public class Menuview extends JFrame {
 
 
 
-        // Désactivation des options en fonction du r
+        // Désactivation des options en fonction du role
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);

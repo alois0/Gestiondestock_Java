@@ -4,7 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5249a0f1-82ec-4d54-9dd0-cfafdee1459c" name="Changes" comment=" correction" />
+    <list default="true" id="5249a0f1-82ec-4d54-9dd0-cfafdee1459c" name="Changes" comment=" correction">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gestion_stock_java/src/controleur/FournisseurController.java" beforeDir="false" afterPath="$PROJECT_DIR$/gestion_stock_java/src/controleur/FournisseurController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gestion_stock_java/src/controleur/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/gestion_stock_java/src/controleur/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gestion_stock_java/src/controleur/ProduitController.java" beforeDir="false" afterPath="$PROJECT_DIR$/gestion_stock_java/src/controleur/ProduitController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gestion_stock_java/src/controleur/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/gestion_stock_java/src/controleur/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gestion_stock_java/src/controleur/VenteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/gestion_stock_java/src/controleur/VenteController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gestion_stock_java/src/modele/Produit.java" beforeDir="false" afterPath="$PROJECT_DIR$/gestion_stock_java/src/modele/Produit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gestion_stock_java/src/modele/Vente.java" beforeDir="false" afterPath="$PROJECT_DIR$/gestion_stock_java/src/modele/Vente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gestion_stock_java/src/vue/AjouterProduitView.java" beforeDir="false" afterPath="$PROJECT_DIR$/gestion_stock_java/src/vue/AjouterProduitView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gestion_stock_java/src/vue/AjouterVenteView.java" beforeDir="false" afterPath="$PROJECT_DIR$/gestion_stock_java/src/vue/AjouterVenteView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gestion_stock_java/src/vue/Menuview.java" beforeDir="false" afterPath="$PROJECT_DIR$/gestion_stock_java/src/vue/Menuview.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -22,6 +34,9 @@
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
@@ -84,7 +99,15 @@
       <option name="project" value="LOCAL" />
       <updated>1744728889566</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary=" correction">
+      <option name="closed" value="true" />
+      <created>1744729003403</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1744729003403</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

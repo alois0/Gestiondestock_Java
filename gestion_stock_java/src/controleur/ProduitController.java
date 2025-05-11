@@ -12,6 +12,11 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.*;
 
+// Note : L'utilisation du pattern DAO  était initialement prévue,
+// mais a dû être avortée en raison de blocages techniques persistants rencontrés durant le développement.
+// Le projet a été poursuivi sans cette couche d’abstraction afin de garantir son avancement fonctionnel.
+
+
 public class ProduitController {
     private Connection connection;
 

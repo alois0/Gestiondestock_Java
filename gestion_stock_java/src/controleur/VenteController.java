@@ -166,7 +166,7 @@ public class VenteController {
         }
     }
 
-    // ✅ Rechercher des produits
+    //  Rechercher des produits
     public List<Produit> rechercherProduits(String recherche) {
         List<Produit> produits = new ArrayList<>();
         String sql = "SELECT * FROM produit WHERE nom LIKE ?";

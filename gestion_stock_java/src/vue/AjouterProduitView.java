@@ -111,7 +111,7 @@ public class AjouterProduitView extends JFrame {
             return;
         }
 
-        // ✅ Récupération de l'ID du fournisseur
+        //  Récupération de l'ID du fournisseur
         String selectedItem = (String) comboBoxFournisseur.getSelectedItem();
         int fournisseurId = 0;
 

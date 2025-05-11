@@ -10,6 +10,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+// Note : L'utilisation du pattern DAO  était initialement prévue,
+// mais a dû être avortée en raison de blocages techniques persistants rencontrés durant le développement.
+// Le projet a été poursuivi sans cette couche d’abstraction afin de garantir son avancement fonctionnel.
+
 public class LoginController {
 
 
